@@ -14,6 +14,7 @@
 # define FT_DISPLAY_H
 
 # include <unistd.h>
+# include <stdint.h>
 
 void	ft_putchar(char c);
 
@@ -32,5 +33,8 @@ void	ft_putnbr_ui(unsigned int nb);
 
 void	ft_putnbr_base(int nb, unsigned int base);
 void	ft_putnbr_base_ui(unsigned int nb, unsigned int base);
+
+void	display_hex_u8(uint8_t v);
+void	display_hex_u32(uint32_t v);
 
 #endif
