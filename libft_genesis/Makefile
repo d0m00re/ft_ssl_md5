@@ -45,9 +45,12 @@ COL_WHITE		= \033[1;37m
 ##################################################
 
 SRC_M_DISPLAY = ft_putchar.c ft_putstr.c display_hex.c ft_putnbr.c
+
 SRC_M_STRING =  ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strcat.c replace.c\
 		ft_strsplit.c\
-		ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_isseparator.c
+		ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_isseparator.c\
+		substring_is_present_with_delimiter.c
+
 SRC_M_STDLIB = ft_atoi.c
 SRC_M_LINKED_LIST = ft_lstcreate_elem.c ft_lstpush_back.c   ft_lstpush_front.c ft_lstdestroy.c ft_lstdisplay.c
 SRC_M_GRAPH = ft_make_graph.c ft_destroy_graph.c ft_display_graph.c ft_graph_exist.c

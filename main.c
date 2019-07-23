@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <string.h>
 #include "ft_display.h"
+#include "ft_string.h"
 #include "ft_md5.h"
 
 extern const uint32_t g_r[];
@@ -100,13 +101,75 @@ int ft_usage()
 	return (1);
 }
 
+#define MD5_STRING "md5"
+#define SHA256_STRING "sha256"
+
+
+/*
+int get_type_hash(char *string, char *arg)
+{
+	return (1);
+}*/
+/*
+typedef struct s_arg
+{
+	short type_hash;
+} t_arg;
+*/
+
+//substring_is_present_with_delimiter(char *pattern, char *elem, char sep)
+
+#include <math.h>
+
 int main(int ac, char **av)
 {
-	if (ac < 3)
+	uint8_t flag;
+	int type_hash;
+	if (ac < 2)
 		return (ft_usage());
-	if (strcmp(av[1], "md5") == 0)
-		md5(av[2]);
-	else if (strcmp(av[1], "sha256") == 0)
+
+	type_hash = substring_is_present_with_delimiter("md5|sha256", av[1], '|');
+
+	int c = 3;
+
+	while (c < ac)
+	{
+		int tmp = substring_is_present_with_delimiter("-p|-q|-s|-r", av[c], '|');
+		if (tmp == 3)
+		{
+			c++;
+			if (c < ac)
+			{
+				printf("md5 string : %s\n", av[c]);
+			}
+			else
+			{
+				printf("no string ...\n");
+				exit(1);
+			}
+		}
+		printf("argument found : %d\n", tmp);
+		c++;
+	}
+
+
+	if (type_hash == 1)
+	{
+		if (ac == 3)
+			md5(av[2]);
+		else
+		{
+			size_t count = 0;
+			char buff[200];
+			bzero(buff, 200);
+			while (read(0, &(buff[count]), 1) && buff[count] != 10)
+			{count++;}
+			for (int x = 0; buff[x]; x++)
+				printf("--> %d\n", buff[x]);
+			md5(buff);
+		}
+	}
+	else if (type_hash == 2)
 		sha256(av[2]);
 	else
 		return (ft_usage("usage:\n\t./hash [md5/sha256] [string]\n"));

@@ -13,7 +13,7 @@ INC_PATH= ./$(LIBFT_PATH)/$(INC)
 #################################
 ############ SOURCES
 #################################
-SRC_M_MD5 = md5_global.c  md5_init.c  md5_process.c  md5_run.c
+SRC_M_MD5 = md5_global.c  md5_init.c  md5_process.c  md5_run.c md5_destroy.c
 
 #############################
 ############ OBJECT GENERQTION
