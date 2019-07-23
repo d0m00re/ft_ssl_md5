@@ -3,7 +3,12 @@ CFLAGS = -Wall -Werror -Wextra
 NAME = hash_bitch
 MAIN_NAME = hash
 SRC_PATH = srcs
-SRC_M_MD5_PATH = md5_utils
+
+# PATH MODULE
+SRC_M_MD5_PATH    = md5_utils
+SRC_M_SHA256_PATH = sha256_utils
+SRC_M_ARG_PATH    = ft_arg
+
 OBJ_PATH = srcs
 # LIBFT BITCH
 LIBFT_PATH = libft_genesis
@@ -14,14 +19,20 @@ INC_PATH= ./$(LIBFT_PATH)/$(INC)
 ############ SOURCES
 #################################
 SRC_M_MD5 = md5_global.c  md5_init.c  md5_process.c  md5_run.c md5_destroy.c
+#SRC_M_SHA256 = 
+SRC_M_ARG = ft_arg.c
 
 #############################
 ############ OBJECT GENERQTION
-OBJ_M_MD5 = $(patsubst %.c, %.o, $(SRC_M_MD5))
-SRC_MD5 =  $(addprefix ./$(SRC_M_MD5_PATH)/, $(SRC_M_MD5))
-OBJ_MD5 =  $(addprefix ./$(OBJ_PATH)/, $(OBJ_M_MD5))
+OBJ_M_MD5 =  $(patsubst %.c, %.o, $(SRC_M_MD5))
+SRC_MD5   =  $(addprefix ./$(SRC_M_MD5_PATH)/, $(SRC_M_MD5))
+OBJ_MD5   =  $(addprefix ./$(OBJ_PATH)/, $(OBJ_M_MD5))
 
-OBJS = $(OBJ_MD5)
+OBJ_M_ARG =  $(patsubst %.c, %.o, $(SRC_M_ARG))
+SRC_ARG   =  $(addprefix ./$(SRC_M_ARG_PATH)/, $(SRC_M_ARG))
+OBJ_ARG   =  $(addprefix ./$(OBJ_PATH)/, $(OBJ_M_ARG))
+
+OBJS = $(OBJ_MD5) $(OBJS_ARG)
 
 #################################
 ############ RULES
@@ -29,11 +40,14 @@ OBJS = $(OBJ_MD5)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_MD5) libft
-	gcc main.c $(OBJ_MD5) $(LIBFT_PATH)/libft.a  -o $(MAIN_NAME) -I $(INC_PATH) -I $(INC)
+$(NAME): $(OBJ_MD5) $(OBJ_ARG) libft
+	gcc main.c $(OBJ_MD5) $(OBJ_ARG) $(LIBFT_PATH)/libft.a  -o $(MAIN_NAME) -I $(INC_PATH) -I $(INC)
 
 # rep generation file
 $(OBJ_MD5): $(OBJ_PATH)%.o : $(SRC_PATH)/$(SRC_M_MD5_PATH)/%.c
+	@$(CC) $(CFLAGS) -I $(INC_PATH) -I $(INC) -c $< -o $@
+
+$(OBJ_ARG): $(OBJ_PATH)%.o : $(SRC_PATH)/$(SRC_M_ARG_PATH)/%.c
 	@$(CC) $(CFLAGS) -I $(INC_PATH) -I $(INC) -c $< -o $@
 
 fclean:

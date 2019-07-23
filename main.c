@@ -6,6 +6,7 @@
 #include "ft_display.h"
 #include "ft_string.h"
 #include "ft_md5.h"
+#include "ft_arg.h"
 
 extern const uint32_t g_r[];
 
@@ -105,73 +106,75 @@ int ft_usage()
 #define SHA256_STRING "sha256"
 
 
-/*
-int get_type_hash(char *string, char *arg)
-{
-	return (1);
-}*/
-/*
-typedef struct s_arg
-{
-	short type_hash;
-} t_arg;
-*/
 
 //substring_is_present_with_delimiter(char *pattern, char *elem, char sep)
 
 #include <math.h>
 
-int main(int ac, char **av)
+void arg_tostring(t_arg arg)
 {
-	uint8_t flag;
-	int type_hash;
-	if (ac < 2)
-		return (ft_usage());
+	printf("type hash : %d\n", arg.type_hash);
+	printf("q : %d| p : %d | s : %d | r : %d\n", arg.q, arg.p, arg.s, arg.r);
+	printf("string --> %s\n", arg.string);
+	printf("file : %d | name file :%s\n", arg.file, arg.name_file);
+	printf("error : %d\n", arg.error);
+}
 
-	type_hash = substring_is_present_with_delimiter("md5|sha256", av[1], '|');
+int power_of_two(int nb)
+{
+	int c = 0;
+	int tot = 1;
 
-	int c = 3;
-
-	while (c < ac)
+	while (c < nb)
 	{
-		int tmp = substring_is_present_with_delimiter("-p|-q|-s|-r", av[c], '|');
-		if (tmp == 3)
-		{
-			c++;
-			if (c < ac)
-			{
-				printf("md5 string : %s\n", av[c]);
-			}
-			else
-			{
-				printf("no string ...\n");
-				exit(1);
-			}
-		}
-		printf("argument found : %d\n", tmp);
+		tot *= 2;
 		c++;
 	}
+	return (tot);
+}
 
+char *get_fd0(void)
+{
+	char *buffer;
+	int count;
 
-	if (type_hash == 1)
+	count = 0;
+	if (!(buffer = malloc(sizeof(char) * 10000)))
+		return (0);
+	bzero(buffer, 10000);
+	while (read(0, &(buffer[count]), 1) && buffer[count] != 10)
+		count++;
+	return (buffer);
+}
+
+int main(int ac, char **av)
+{
+	t_arg arg;
+	char *buff;
+
+	arg = manage_arg(ac, av);
+	arg_tostring(arg);
+	if (arg.error)
 	{
-		if (ac == 3)
-			md5(av[2]);
-		else
-		{
-			size_t count = 0;
-			char buff[200];
-			bzero(buff, 200);
-			while (read(0, &(buff[count]), 1) && buff[count] != 10)
-			{count++;}
-			for (int x = 0; buff[x]; x++)
-				printf("--> %d\n", buff[x]);
-			md5(buff);
-		}
+		ft_putstr("error argument ....\n");
+		return (arg.error);
 	}
-	else if (type_hash == 2)
-		sha256(av[2]);
-	else
-		return (ft_usage("usage:\n\t./hash [md5/sha256] [string]\n"));
-	return (0);
+
+	if (arg.p)
+	{
+		ft_putstr("get fd0 :\n");
+		buff = get_fd0();
+	}
+
+	printf("buff : %s\n", buff);
+
+        if (arg.type_hash == 1)
+        {
+		md5(buff);
+        }
+        else if (arg.type_hash == 2)
+                sha256(av[2]);
+        else
+                return (ft_usage("usage:\n\t./hash [md5/sha256] [string]\n"));
+
 }
