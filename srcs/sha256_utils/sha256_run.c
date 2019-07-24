@@ -54,7 +54,7 @@ void                    sha256_process(t_word_sha256 *word, uint32_t *data)
 	count = 0;
 	while (count < 64)
 	{
-		uint32_t t1 = tmp[7] + f_bsig1(tmp[4]) + f_ch(tmp[4],tmp[5], tmp[6]) + g_sha256_k[count] + w[count];
+		uint32_t t1 = tmp[7] + f_bsig1(tmp[4]) + f_ch(tmp[4], tmp[5], tmp[6]) + g_sha256_k[count] + w[count];
 		uint32_t t2 = f_bsig0(tmp[0]) + f_maj(tmp[0],tmp[1],tmp[2]);
 		tmp[7] = tmp[6];
 		tmp[6] = tmp[5];
