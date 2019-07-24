@@ -13,6 +13,7 @@
 #ifndef FT_STRING_H
 # define FT_STRING_H
 # include <string.h>
+# include <stdint.h>
 
 size_t		ft_strlen(const char *s);
 
@@ -55,5 +56,14 @@ void		ft_bzero(void *v, size_t n);
 */
 int	substring_is_present_with_delimiter(char *pattern, char *elem, char sep);
 
+
+/*
+** parse uint in string
+*/
+void		store_hex8_to_2char(char *target, uint8_t num);
+
+void		store_hex32_to_8char(char *target, uint32_t num);
+
+void		store_hex128_to_32_char(char *target, uint32_t *word, size_t nb_word);
 
 #endif
