@@ -15,11 +15,15 @@
 
 # include <fcntl.h>
 # include <unistd.h>
+# include "ft_display.h"
+# include <stdlib.h>
 
 int		ft_file_exist(char *name);
 
 int		ft_file_size(char *name);
 
-char	*ft_file_return_data(char *name);
+char		*ft_file_return_data(char *name);
+
+char		*ft_file_return_data_end_caract(char *name, char end);
 
 #endif

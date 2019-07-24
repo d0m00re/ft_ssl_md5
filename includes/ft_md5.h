@@ -36,5 +36,6 @@ void		md5_destroy(t_word_md5 *word);
 
 t_word_md5	word_init_md5(char *str);
 
+char		*md5_get(char *str);
 
 #endif

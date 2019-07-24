@@ -7,54 +7,9 @@
 #include "ft_string.h"
 #include "ft_md5.h"
 #include "ft_arg.h"
+#include "ft_file.h"
 
 extern const uint32_t g_r[];
-
-/*
-void init_g_k(void)
-{
-	int count = 0;
-
-	while (count < 64):
-	{
-		g_k[count] = floor(abs(sin(i+1)) * (4294967296);
-		count++;
-	}
-}
-*/
-
-void hexa_display(char *str, size_t size)
-{
-	size_t count;
-	uint8_t tmp;
-	printf("mem display :\n");
-	printf("%lu\n", size);//exit(1);
-	count = 0;
-	while (count < size)
-	{
-		tmp = str[count];
-		printf("%x|", tmp);
-		count++;
-	}
-	printf("\n");
-}
-
-void hexa_display32(uint32_t *str, size_t size)
-{
-        size_t count;
-        uint32_t tmp;
-        printf("mem display :\n");
-        printf("%lu\n", size);//exit(1);
-        count = 0;
-        while (count < size)
-        {
-                tmp = str[count];
-                printf("%u|", tmp);
-                count++;
-        }
-        printf("\n");
-}
-
 
 /*
 ajouter le bit "1" au message
@@ -63,33 +18,6 @@ ajouter la taille du message initial(avant le padding) codée en 64-bit little-e
 448 / 8 : 56 octet
 512 / 8 : 64 octet
 */
-void word_tostring_md5(t_word_md5 *word)
-{
-	printf("word : {a : %x, b : %x, c : %x, d : %x}\n", word->word[0], word->word[1], word->word[2], word->word[3]);
-}
-
-void md5_display(t_word_md5 *word)
-{
-	ft_putstr("\nmd5 hash : {");
-	display_hex_u32(word->word[0]);
-	display_hex_u32(word->word[1]);
-	display_hex_u32(word->word[2]);
-	display_hex_u32(word->word[3]);
-	ft_putstr("}\n");
-}
-
-char *md5(char *str)
-{
-	t_word_md5 word;
-
-	printf("----------------\n");
-	word = word_init_md5(str);
-	md5_run(&word);
-	//word_tostring_md5(&word);
-	md5_display(&word);
-	printf("______________________________\n");
-	return ("hash");
-}
 
 char *sha256(char *str)
 {
@@ -147,34 +75,57 @@ char *get_fd0(void)
 	return (buffer);
 }
 
+char *sha256_get(char *str)
+{
+	printf("KOUKOU");
+	return (0);
+}
+
 int main(int ac, char **av)
 {
+	char *(*hash[])(char *str) = {md5_get, sha256_get};
 	t_arg arg;
 	char *buff;
+	char *tstr;
 
 	arg = manage_arg(ac, av);
-	arg_tostring(arg);
-	if (arg.error)
+	//arg_tostring(arg);
+	if (arg.error || arg.type_hash == 0)
 	{
-		ft_putstr("error argument ....\n");
+		ft_usage("usage:\n\t./hash [md5/sha256] [string]\n");
 		return (arg.error);
 	}
-
+	buff = 0;
+	if (arg.p)
+		buff = get_fd0();
+	tstr = 0;
 	if (arg.p)
 	{
-		ft_putstr("get fd0 :\n");
-		buff = get_fd0();
+		tstr = hash[arg.type_hash - 1](buff);//md5_get(buff);
+		printf("md5 generation fd 0: %s\n", tstr);
+		free(tstr);
 	}
-
-	printf("buff : %s\n", buff);
-
-        if (arg.type_hash == 1)
-        {
-		md5(buff);
-        }
-        else if (arg.type_hash == 2)
-                sha256(av[2]);
-        else
-                return (ft_usage("usage:\n\t./hash [md5/sha256] [string]\n"));
+	if (arg.s)
+	{
+		tstr = hash[arg.type_hash - 1](arg.string);
+		printf("md generation with -s : %s\n", tstr);
+		free(tstr);
+	}
+	if (arg.file)
+	{
+		tstr = ft_file_return_data_end_caract(arg.name_file, 10);
+		if (tstr)
+		{
+			char *tstr2 = hash[arg.type_hash - 1](tstr);
+			printf("get md from file : %s - %s\n", arg.name_file, tstr2);
+			free(tstr);
+			free(tstr2);
+		}
+		else
+		{
+			printf("unable open file %s\n", arg.name_file);
+		}
+	}
+        //        return (ft_usage("usage:\n\t./hash [md5/sha256] [string]\n"));
 
 }

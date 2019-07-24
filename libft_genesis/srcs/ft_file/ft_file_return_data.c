@@ -37,3 +37,30 @@ char		*ft_file_return_data(char *name)
 	str[size - 1] = '\0';
 	return (str);
 }
+
+char	*ft_file_return_data_end_caract(char *name, char end)
+{
+	char    *str;
+	char    c;
+	int             count;
+	int             size;
+	int             fd;
+
+	size = ft_file_size(name);
+	if (!name || size <= 0)
+		return (0);
+	str = malloc(sizeof(char) * (size + 2));
+	if (!str)
+		return (0);
+	fd = open(name, O_RDONLY);
+	count = 0;
+	while (read(fd, &c, 1) && count < size)
+	{
+		str[count] = c;
+		count++;
+	}
+	close(fd);
+	str[size - 1] = end;
+	str[size] = 0;
+	return (str);
+}

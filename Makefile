@@ -18,7 +18,7 @@ INC_PATH= ./$(LIBFT_PATH)/$(INC)
 #################################
 ############ SOURCES
 #################################
-SRC_M_MD5 = md5_global.c  md5_init.c  md5_process.c  md5_run.c md5_destroy.c
+SRC_M_MD5 = md5_global.c  md5_init.c  md5_process.c  md5_run.c md5_destroy.c md5_get.c
 #SRC_M_SHA256 = 
 SRC_M_ARG = ft_arg.c
 

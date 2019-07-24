@@ -52,8 +52,11 @@ SRC_M_STRING =  ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strcat.c repl
 		substring_is_present_with_delimiter.c
 
 SRC_M_STDLIB = ft_atoi.c
+
 SRC_M_LINKED_LIST = ft_lstcreate_elem.c ft_lstpush_back.c   ft_lstpush_front.c ft_lstdestroy.c ft_lstdisplay.c
+
 SRC_M_GRAPH = ft_make_graph.c ft_destroy_graph.c ft_display_graph.c ft_graph_exist.c
+
 SRC_M_FILE = ft_file_exist.c       ft_file_return_data.c ft_file_size.c
 
 SRC_M_TAB2D_INT = make_2dtab_int.c destroy_2dtab_int.c get_value_2dtab_int.c set_value_2dtab_int.c
@@ -69,6 +72,8 @@ OBJ_M_STRING =      $(patsubst %.c, %.o, $(SRC_M_STRING))
 OBJ_M_STDLIB =      $(patsubst %.c, %.o, $(SRC_M_STDLIB))
 OBJ_M_LINKED_LIST = $(patsubst %.c, %.o, $(SRC_M_LINKED_LIST))
 OBJ_M_GRAPH =       $(patsubst %.c, %.o, $(SRC_M_GRAPH))
+
+OBJ_M_FILE =        $(patsubst %.c, %.o, $(SRC_M_FILE))
 
 OBJ_M_TAB2D_INT = $(patsubst %.c, %.o, $(SRC_M_TAB2D_INT))
 
@@ -102,7 +107,10 @@ OBJ_TAB2D_INT = $(addprefix ./$(OBJ_PATH)/, $(OBJ_M_TAB2D_INT))
 SRC_STRING_RESIZE = $(addprefix ./$(OBJ_PATH)/, $(SRC_M_STRING_RESIZE))
 OBJ_STRING_RESIZE = $(addprefix ./$(OBJ_PATH)/, $(OBJ_M_STRING_RESIZE))
 
-OBJS =  $(OBJ_DISPLAY) $(OBJ_STRING) $(OBJ_STDLIB) $(OBJ_LINKED_LIST) $(OBJ_GRAPH) $(OBJ_FILE) $(OBJ_TAB2D_INT) $(OBJ_STRING_RESIZE)
+SRC_FILE = $(addprefix ./$(OBJ_PATH)/, $(SRC_M_FILE))
+OBJ_FILE = $(addprefix ./$(OBJ_PATH)/, $(OBJ_M_FILE))
+
+OBJS =  $(OBJ_FILE) $(OBJ_FILE) $(OBJ_DISPLAY) $(OBJ_STRING) $(OBJ_STDLIB) $(OBJ_LINKED_LIST) $(OBJ_GRAPH) $(OBJ_FILE) $(OBJ_TAB2D_INT) $(OBJ_STRING_RESIZE)
 
 #################################################
 ### RULES
@@ -110,7 +118,7 @@ OBJS =  $(OBJ_DISPLAY) $(OBJ_STRING) $(OBJ_STDLIB) $(OBJ_LINKED_LIST) $(OBJ_GRAP
 
 all: $(NAME)
 
-$(NAME) : $(OBJ_DISPLAY) $(OBJ_STRING) $(OBJ_STDLIB) $(OBJ_LINKED_LIST) $(OBJ_FILE) $(OBJ_TAB2D_INT) $(OBJ_STRING_RESIZE) #$(OBJ_GRAPH) 
+$(NAME) : $(OBJ_FILE) $(OBJ_DISPLAY) $(OBJ_STRING) $(OBJ_STDLIB) $(OBJ_LINKED_LIST) $(OBJ_FILE) $(OBJ_TAB2D_INT) $(OBJ_STRING_RESIZE) #$(OBJ_GRAPH) 
 	ar rc $(NAME) $(OBJS)
 
 $(OBJ_DISPLAY): $(OBJ_PATH)%.o : $(SRC_PATH)/$(SRC_M_DISPLAY_PATH)%.c
@@ -139,6 +147,10 @@ $(OBJ_TAB2D_INT): $(OBJ_PATH)%.o : $(SRC_PATH)/$(SRC_M_TAB2D_INT_PATH)%.c
 
 $(OBJ_STRING_RESIZE) : $(OBJ_PATH)%.o : $(SRC_PATH)/$(SRC_M_STRING_RESIZE_PATH)%.c
 	echo  $(SRC_PATH)/$(SRC_M_STRING_RESIZE_PATH)
+	@$(CC) $(CFLAGS) -I $(INC_PATH) -I $(INC) -c $< -o $@
+
+$(OBJ_FILE) : $(OBJ_PATH)%.o : $(SRC_PATH)/$(SRC_M_FILE_PATH)%.c
+	echo  $(SRC_PATH)/$(SRC_M_FILE_PATH)
 	@$(CC) $(CFLAGS) -I $(INC_PATH) -I $(INC) -c $< -o $@
 
 test_bitch :

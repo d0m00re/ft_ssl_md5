@@ -49,7 +49,6 @@ t_arg manage_arg(int ac, char **av)
                 count++;
         }
         // set stdout if we need that
-	printf("%d | %d\n", arg.s, arg.file);
         if (arg.s == 0 && arg.file == 0)
                 arg.p = 1;
         return (arg);
