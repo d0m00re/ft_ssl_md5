@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   md5_get.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/24 14:08:25 by alhelson          #+#    #+#             */
+/*   Updated: 2019/07/24 14:08:35 by alhelson         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_md5.h"
 
-void store_hex8_to_2char(char *target, uint8_t num)
+void		store_hex8_to_2char(char *target, uint8_t num)
 {
-	int a;
-	int b;
+	int		a;
+	int		b;
 
 	a = num / 16;
 	b = num % 16;

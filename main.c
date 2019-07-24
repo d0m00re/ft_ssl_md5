@@ -5,11 +5,14 @@
 #include <string.h>
 #include "ft_display.h"
 #include "ft_string.h"
+
 #include "ft_md5.h"
+#include "ft_sha256.h"
+
 #include "ft_arg.h"
 #include "ft_file.h"
 
-extern const uint32_t g_r[];
+//extern const uint32_t g_r[];
 
 /*
 ajouter le bit "1" au message
@@ -19,14 +22,10 @@ ajouter la taille du message initial(avant le padding) codée en 64-bit little-e
 512 / 8 : 64 octet
 */
 
-char *sha256(char *str)
-{
-	ft_putstr("sha256:\n");
-}
 
-int ft_usage()
+int ft_usage(char *str)
 {
-	ft_putstr("usage:\n\t./hash [md5/sha256] [string]\n");
+	ft_putstr(str);
 	return (1);
 }
 
@@ -73,12 +72,6 @@ char *get_fd0(void)
 	while (read(0, &(buffer[count]), 1) && buffer[count] != 10)
 		count++;
 	return (buffer);
-}
-
-char *sha256_get(char *str)
-{
-	printf("KOUKOU");
-	return (0);
 }
 
 int main(int ac, char **av)
