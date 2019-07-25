@@ -15,17 +15,17 @@ static void	md5_process_core(uint32_t *f, uint32_t *g, uint32_t *tmp, int count)
 	else if (count < 32)
 	{
 		*f = md5_process_g(tmp[1], tmp[2], tmp[3]);
-		*g = (5*count + 1) % 16;
+		*g = (5 * count + 1) % 16;
 	}
 	else if (count < 48)
 	{
 		*f = md5_process_h(tmp[1], tmp[2], tmp[3]);
-		*g = (3*count + 5) % 16;
+		*g = (3 * count + 5) % 16;
 	}
 	else
 	{
 		*f = md5_process_i(tmp[1], tmp[2], tmp[3]);
-		*g = (7*count) % 16;
+		*g = (7 * count) % 16;
 	}
 }
 
