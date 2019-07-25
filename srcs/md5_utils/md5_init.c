@@ -6,7 +6,6 @@
 #include <string.h>
 #include "ft_display.h"
 
-
 /*
 ** word : data structure who contain update element
 ** data : begin element perform actual hash
