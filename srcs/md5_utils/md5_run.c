@@ -53,7 +53,7 @@ static void	md5_process(t_word_md5 *word, uint32_t *data)
 	word->word[1] += tmp[1];
 	word->word[2] += tmp[2];
 	word->word[3] += tmp[3];
-	 printf("Last turn : turn ... %x %x %x %x\n", tmp[0], tmp[1], tmp[2], tmp[3]);
+//	 printf("Last turn : turn ... %x %x %x %x\n", tmp[0], tmp[1], tmp[2], tmp[3]);
 }
 
 void	md5_run(t_word_md5 *word)
@@ -61,12 +61,12 @@ void	md5_run(t_word_md5 *word)
 	size_t count;
 
 	count = 0;
-	printf("---> %ld\n", word->nb_turn);
+//	printf("---> %ld\n", word->nb_turn);
 	while (count < word->nb_turn)
 	{
-		printf("MD5 : turn %ld\n", count);
+//		printf("MD5 : turn %ld\n", count);
 		md5_process(word, &(word->msg[count*16]));
 		count++;
 	}
-	 printf("Last turn : turn ... %x %x %x %x\n", word->word[0], word->word[1], word->word[2], word->word[3]);
+//	 printf("Last turn : turn ... %x %x %x %x\n", word->word[0], word->word[1], word->word[2], word->word[3]);
 }

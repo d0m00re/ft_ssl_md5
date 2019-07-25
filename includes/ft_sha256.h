@@ -19,6 +19,8 @@
 # include "ft_string.h"
 # include "ft_display.h"
 
+extern const uint32_t	g_sha256_k[];
+
 typedef struct	s_word_sha256
 {
 	uint32_t	word[8];
