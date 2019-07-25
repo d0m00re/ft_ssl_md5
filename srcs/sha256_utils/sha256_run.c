@@ -1,4 +1,5 @@
 #include "ft_sha256.h"
+#include "ft_stdlib.h"
 #include <stdio.h>
 
 static uint32_t g_sha256_k[64] = {\
@@ -30,16 +31,24 @@ void                    sha256_process(t_word_sha256 *word, uint32_t *data)
 	printf("Step 1\n");
 	while (count < 16)
 	{
-		printf("turn ....\n");
+		printf("Data : %u | %u\n", w[count], data[count]);
 		w[count] = data[count];
 		count++;
 	}
 	printf("step 2\n");
 	while (count < 64)
 	{
-		w[count] = f_ssig1(w[count-2]) + w[count - 7] + f_ssig0(count-15) + w[count-16];
+		w[count] = f_ssig1(w[count-2]) + w[count - 7] + f_ssig0(w[count-15]) + w[count-16];
 		count++;
 	}
+
+
+	printf("Display result of the step :\n[");
+	for (int i= 0; i < 64; i++)
+	{
+		printf("%u ", w[i]);
+	}
+	printf("]\n");
 	// 2 ) initialize the wortking variables
 	count = 0;
 	printf("step3\n");
@@ -87,6 +96,11 @@ void			sha256_run(t_word_sha256 *word)
 		printf("SHA256 turn %ld\n", count);
 		sha256_process(word, &(word->msg[count * 16]));
 		count++;
+	}
+	// swap word
+	for (int i =0; i < 8; i++)
+	{
+		word->word[i] = swap32(word->word[i]);
 	}
 	printf("sha 256 last turn\n");
 }

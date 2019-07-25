@@ -51,7 +51,7 @@ SRC_M_STRING =  ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strcat.c repl
 		ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_isseparator.c\
 		substring_is_present_with_delimiter.c store_hex128_to_32_char.c
 
-SRC_M_STDLIB = ft_atoi.c
+SRC_M_STDLIB = ft_atoi.c swap.c
 
 SRC_M_LINKED_LIST = ft_lstcreate_elem.c ft_lstpush_back.c   ft_lstpush_front.c ft_lstdestroy.c ft_lstdisplay.c
 

@@ -14,7 +14,12 @@
 # define FT_STDLIB_H
 
 # include <stdlib.h>
+# include <stdint.h>
 
 int		ft_atoi(const char *str);
+
+uint32_t	swap32(uint32_t r);
+
+uint64_t	swap64(uint64_t r);
 
 #endif
