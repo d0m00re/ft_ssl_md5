@@ -29,14 +29,8 @@ int ft_usage(char *str)
 	return (1);
 }
 
-#define MD5_STRING "md5"
-#define SHA256_STRING "sha256"
 
-
-
-//substring_is_present_with_delimiter(char *pattern, char *elem, char sep)
-
-#include <math.h>
+//#include <math.h>
 
 void arg_tostring(t_arg arg)
 {
@@ -45,19 +39,6 @@ void arg_tostring(t_arg arg)
 	printf("string --> %s\n", arg.string);
 	printf("file : %d | name file :%s\n", arg.file, arg.name_file);
 	printf("error : %d\n", arg.error);
-}
-
-int power_of_two(int nb)
-{
-	int c = 0;
-	int tot = 1;
-
-	while (c < nb)
-	{
-		tot *= 2;
-		c++;
-	}
-	return (tot);
 }
 
 char *get_fd0(void)
@@ -106,19 +87,19 @@ int main(int ac, char **av)
 	}
 	if (arg.file)
 	{
-		tstr = ft_file_return_data_end_caract(arg.name_file, 10);
-		if (tstr)
+		int count = arg.pos_first_pathfile;
+		while (count < ac)
 		{
-			char *tstr2 = hash[arg.type_hash - 1](tstr);
-			printf("get md from file : %s - %s\n", arg.name_file, tstr2);
-			free(tstr);
-			free(tstr2);
-		}
-		else
-		{
-			printf("unable open file %s\n", arg.name_file);
+			tstr = ft_file_return_data_end_caract(av[count], 10);
+			if (tstr)
+			{
+				char *tstr2 = hash[arg.type_hash - 1](tstr);
+				printf("%s\t%s\n", tstr2, av[count]);
+				free(tstr);
+				free(tstr2);
+			}
+			count++;
 		}
 	}
-        //        return (ft_usage("usage:\n\t./hash [md5/sha256] [string]\n"));
-
+	return (0);
 }

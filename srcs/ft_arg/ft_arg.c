@@ -15,7 +15,7 @@ t_arg manage_arg(int ac, char **av)
                 return (arg);
         }
         count = 2;
-        while (count < ac)
+        while (count < ac && count > 0)
         {
                 tmp = substring_is_present_with_delimiter("-p|-q|-s|-r", av[count], '|');
                 if (tmp == 1)
@@ -39,7 +39,9 @@ t_arg manage_arg(int ac, char **av)
                 else if (tmp == 0 && arg.file == 0)
                 {
                         arg.file = 1;
+			arg.pos_first_pathfile = count;
                         arg.name_file = av[count];
+			count = -2;
                 }
                 else //name file
                 {

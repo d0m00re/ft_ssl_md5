@@ -25,20 +25,24 @@
 **  printf("%d\n",  is_with_delimiter("md5|sha256", "sdfsdfsfsss", '|'));
 **                return 0
 */
-
 int			substring_is_present_with_delimiter(char *pattern,\
 			char *elem, char sep)
 {
 	int		act_pattern;
 	char	**split;
 
-	split = ft_strsplit(pattern, sep);
+	if (!(split = ft_strsplit(pattern, sep)))
+		return (0);
 	act_pattern = 1;
 	while (split && split[act_pattern - 1])
 	{
 		if (strcmp(split[act_pattern - 1], elem) == 0)
+		{
+			ft_strfreesplit(split);
 			return (act_pattern);
+		}
 		act_pattern++;
 	}
+	ft_strfreesplit(split);
 	return (0);
 }

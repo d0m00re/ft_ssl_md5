@@ -30,6 +30,7 @@ typedef struct	s_arg
 	short int	r;
 	short int	file;
 	char		*name_file;
+	int		pos_first_pathfile;
 	short int	error;
 }				t_arg;
 

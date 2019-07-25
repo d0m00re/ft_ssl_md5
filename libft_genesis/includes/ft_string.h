@@ -31,6 +31,8 @@ char		*ft_strcat(char *s1, const char *s2);
 
 char		**ft_strsplit(char const *s, char c);
 
+void		ft_strfreesplit(char **data);
+
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isascii(int c);

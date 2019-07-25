@@ -83,3 +83,20 @@ char			**ft_strsplit(char const *s, char c)
 		str[0] = 0;
 	return ((char **)str);
 }
+
+void		ft_strfreesplit(char **data)
+{
+	int c;
+
+	c = 0;
+	if (!data)
+		return ;
+	while (data[c])
+	{
+		free(data[c]);
+		c++;
+	}
+	free(data[c]);
+	free(data);
+	data = 0;
+}

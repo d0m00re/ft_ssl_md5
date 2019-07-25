@@ -23,14 +23,6 @@ void	sha256_process(t_word_sha256 *word, uint32_t *data)
 		w[count] = f_ssig1(w[count-2]) + w[count - 7] + f_ssig0(w[count-15]) + w[count-16];
 		count++;
 	}
-
-
-	//printf("Display result of the step :\n[");
-	//for (int i= 0; i < 64; i++)
-	//{
-	//	printf("%u ", w[i]);
-	//}
-	//printf("]\n");
 	// 2 ) initialize the wortking variables
 	count = 0;
 	//printf("step3\n");

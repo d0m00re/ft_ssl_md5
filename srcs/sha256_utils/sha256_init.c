@@ -41,7 +41,7 @@ void	word_padding_sha256(t_word_sha256 *word, char *str)
 	*b64 = swap64((init_len-1)*8);
 	*b64 = (init_len-1)*8;
 	word->nb_turn = word->len / 64;
-	display_hex_string((char *)(word->msg), word->nb_turn * 64);
+	//display_hex_string((char *)(word->msg), word->nb_turn * 64);
 	// reverse 32 bits words
 	while (count < (word->len / 4))
 	{
@@ -50,10 +50,10 @@ void	word_padding_sha256(t_word_sha256 *word, char *str)
 	}
 	uint32_t tmp;
 	tmp = word->msg[count-1];
-	printf("----> %ld\n", count-1);
+	//printf("----> %ld\n", count-1);
 	word->msg[count-1] = swap32(word->msg[count-2]);
 	word->msg[count-2] = swap32(tmp);
-	display_hex_string((char *)(word->msg), word->nb_turn * 64);
+	//display_hex_string((char *)(word->msg), word->nb_turn * 64);
 }
 
 t_word_sha256	word_init_sha256(char *str)
