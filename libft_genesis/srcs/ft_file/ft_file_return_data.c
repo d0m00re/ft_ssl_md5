@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 23:03:06 by alhelson          #+#    #+#             */
-/*   Updated: 2018/03/17 23:03:15 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/25 15:25:24 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ char		*ft_file_return_data(char *name)
 	return (str);
 }
 
-char	*ft_file_return_data_end_caract(char *name, char end)
+char		*ft_file_return_data_end_caract(char *name, char end)
 {
-	char    *str;
-	char    c;
-	int             count;
-	int             size;
-	int             fd;
+	char	*str;
+	char	c;
+	int		count;
+	int		size;
+	int		fd;
 
 	size = ft_file_size(name);
 	if (!name || size <= 0)
