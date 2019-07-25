@@ -38,6 +38,8 @@ char		*ft_file_return_data(char *name)
 	return (str);
 }
 
+#include <stdio.h>
+
 char		*ft_file_return_data_end_caract(char *name, char end)
 {
 	char	*str;
@@ -46,7 +48,9 @@ char		*ft_file_return_data_end_caract(char *name, char end)
 	int		size;
 	int		fd;
 
+	printf("return data end caract\n");
 	size = ft_file_size(name);
+	printf("file size : %d\n", size);
 	if (!name || size <= 0)
 		return (0);
 	str = malloc(sizeof(char) * (size + 2));

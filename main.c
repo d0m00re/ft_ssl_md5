@@ -90,7 +90,9 @@ int main(int ac, char **av)
 		int count = arg.pos_first_pathfile;
 		while (count < ac)
 		{
+			printf("Get file : %s\n", av[count]);
 			tstr = ft_file_return_data_end_caract(av[count], 10);
+			printf("----\n");
 			if (tstr)
 			{
 				char *tstr2 = hash[arg.type_hash - 1](tstr);

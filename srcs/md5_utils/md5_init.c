@@ -49,5 +49,6 @@ t_word_md5	word_init_md5(char *str)
 	word.word[2] = 0x98badcfe;
 	word.word[3] = 0x10325476;
 	word_padding_md5(&word, str);
+	printf("End init md5\n");
 	return (word);
 }

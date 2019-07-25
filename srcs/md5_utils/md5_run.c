@@ -64,7 +64,7 @@ void	md5_run(t_word_md5 *word)
 //	printf("---> %ld\n", word->nb_turn);
 	while (count < word->nb_turn)
 	{
-//		printf("MD5 : turn %ld\n", count);
+		printf("MD5 : turn %ld < %ld\n", count, word->nb_turn);
 		md5_process(word, &(word->msg[count*16]));
 		count++;
 	}
