@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 14:06:03 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/24 14:07:56 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/25 16:06:23 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ typedef struct			s_word_md5
 	size_t				nb_turn;
 }						t_word_md5;
 
-// initialisation
-
-// run
 uint32_t				md5_process_f(uint32_t x, uint32_t y, uint32_t z);
 
 uint32_t				md5_process_g(uint32_t x, uint32_t y, uint32_t z);
