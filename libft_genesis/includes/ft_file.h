@@ -17,10 +17,13 @@
 # include <unistd.h>
 # include "ft_display.h"
 # include <stdlib.h>
+# include <string.h>
 
 int		ft_file_exist(char *name);
 
 int		ft_file_size(char *name);
+
+size_t		ft_file_size2(char *name);
 
 char	*ft_file_return_data(char *name);
 

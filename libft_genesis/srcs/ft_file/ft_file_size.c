@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_file.h"
+#include <string.h>
 
 int			ft_file_size(char *name)
 {
@@ -26,6 +27,23 @@ int			ft_file_size(char *name)
 	fd = open(name, O_RDONLY);
 	while (read(fd, &c, 1))
 		size++;
+	close(fd);
+	return (size);
+}
+
+size_t ft_file_size2(char *name)
+{
+	char	buff[200000];
+	int	fd;
+	size_t	size;
+	size_t tmp;
+
+        if (!(ft_file_exist(name)))
+		return (0);
+        size = 0;
+        fd = open(name, O_RDONLY);
+	while ((tmp = read(fd, buff, 200000)))
+		size += tmp;
 	close(fd);
 	return (size);
 }

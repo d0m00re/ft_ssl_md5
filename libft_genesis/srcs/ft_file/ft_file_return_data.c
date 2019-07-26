@@ -43,26 +43,17 @@ char		*ft_file_return_data(char *name)
 char		*ft_file_return_data_end_caract(char *name, char end)
 {
 	char	*str;
-	char	c;
-	int		count;
-	int		size;
+	size_t		size;
 	int		fd;
 
-	printf("return data end caract\n");
 	size = ft_file_size(name);
-	printf("file size : %d\n", size);
 	if (!name || size <= 0)
 		return (0);
 	str = malloc(sizeof(char) * (size + 2));
 	if (!str)
 		return (0);
 	fd = open(name, O_RDONLY);
-	count = 0;
-	while (read(fd, &c, 1) && count < size)
-	{
-		str[count] = c;
-		count++;
-	}
+	read(fd, str, size);
 	close(fd);
 	str[size - 1] = end;
 	str[size] = 0;

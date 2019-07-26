@@ -59,7 +59,7 @@ void	word_padding_sha256(t_word_sha256 *word, char *str)
 t_word_sha256	word_init_sha256(char *str)
 {
 	t_word_sha256 word;
-	char *tmp;
+	//char *tmp;
 
 	bzero(&word, sizeof(word));
 	word.word[0] = 0x6a09e667;
@@ -71,6 +71,6 @@ t_word_sha256	word_init_sha256(char *str)
 	word.word[6] = 0x1f83d9ab;
 	word.word[7] = 0x5be0cd19;
 	word_padding_sha256(&word, str);
-	tmp = (char *)(word.msg);
+	//tmp = (char *)(word.msg);
 	return (word);
 }
