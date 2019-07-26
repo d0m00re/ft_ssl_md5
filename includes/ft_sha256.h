@@ -35,7 +35,7 @@ void					sha256_destroy(t_word_sha256 *word);
 
 t_word_sha256			word_init_sha256(char *str);
 
-char					*sha256_get(char *str);
+char					*sha256_get(char *str, size_t size);
 
 /*
 **        CH( x, y, z) = (x AND y) XOR ( (NOT x) AND z)

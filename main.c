@@ -57,13 +57,12 @@ char *get_fd0(void)
 
 int main(int ac, char **av)
 {
-	char *(*hash[])(char *str) = {md5_get, sha256_get};
+	char *(*hash[])(char *str, size_t size) = {md5_get, sha256_get};
 	t_arg arg;
 	char *buff;
 	char *tstr;
 
 	arg = manage_arg(ac, av);
-	//arg_tostring(arg);
 	if (arg.error || arg.type_hash == 0)
 	{
 		ft_usage("usage:\n\t./hash [md5/sha256] [string]\n");
@@ -75,13 +74,14 @@ int main(int ac, char **av)
 	tstr = 0;
 	if (arg.p)
 	{
-		tstr = hash[arg.type_hash - 1](buff);//md5_get(buff);
+		tstr = hash[arg.type_hash - 1](buff, strlen(buff));//md5_get(buff);
 		printf("md5 generation fd 0: %s\n", tstr);
 		free(tstr);
 	}
 	if (arg.s)
 	{
-		tstr = hash[arg.type_hash - 1](arg.string);
+		printf("---> %s | %lu\n", arg.string, strlen(arg.string));
+		tstr = hash[arg.type_hash - 1](arg.string, strlen(arg.string));
 		printf("md generation with -s : %s\n", tstr);
 		free(tstr);
 	}
@@ -96,7 +96,7 @@ int main(int ac, char **av)
 			printf("----\n");
 			if (tstr)
 			{
-				char *tstr2 = hash[arg.type_hash - 1](tstr);
+				char *tstr2 = hash[arg.type_hash - 1](tstr, size);
 				printf("%s\t%s\n", tstr2, av[count]);
 				free(tstr);
 				free(tstr2);

@@ -65,7 +65,9 @@ char            *ft_file_return_data_end_caract_size(char *name, char end, size_
 	char	*str;
 	int	fd;
 
-	*size = ft_file_size(name);
+	printf("get file size :)\n");
+	*size = ft_file_size2(name);
+	printf("file size : %ld\n", *size);
 	if (!name || *size <= 0)
 		return (0);
 	str = malloc(sizeof(char) * (*size + 2));

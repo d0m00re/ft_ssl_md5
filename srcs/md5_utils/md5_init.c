@@ -12,13 +12,15 @@
 ** nb_word_md5 size of this part, utils to stop end block without segfault
 */
 
-void	word_padding_md5(t_word_md5 *word, char *str)
+void	word_padding_md5(t_word_md5 *word, char *str, size_t size)
 {
 	size_t init_len;
 	size_t size_to_add; // taille a ajouter pour obtenir une string n % 512 == 448
 
+	printf("--->size : %lu\n", size);
 	size_to_add = 0;
-	init_len = strlen(str) + 1;
+	//init_len = strlen(str) + 1;
+	init_len = size + 1;
 	while ((init_len + size_to_add) % 64 != 56)
 		size_to_add++;
 	// 64 for len msg
@@ -29,16 +31,19 @@ void	word_padding_md5(t_word_md5 *word, char *str)
 	}
 	word->len = (init_len + size_to_add + 64/8);
 	bzero((void *)word->msg, word->len);
-	strcpy((char *)word->msg, str);
+	//strcpy((char *)word->msg, str);
+	memcpy(word->msg, str, size);
 	uint8_t *b8 = &(((uint8_t *)word->msg)[word->len - 8]);
 	uint64_t *b64 = (uint64_t *)(b8);
 	*b64 = (init_len-1)*8;
+	printf("b64 bitch : %lu | %lu\n", init_len, (init_len-1)*8);
+	//exit(1);
 	((uint8_t *)word->msg)[init_len - 1] = 128;
 	word->nb_turn = word->len / 64;
 	printf("word->len : %ld | %ld\n", word->len, word->nb_turn);
 }
 
-t_word_md5	word_init_md5(char *str)
+t_word_md5	word_init_md5(char *str, size_t size)
 {
 	t_word_md5	word;
 
@@ -48,7 +53,7 @@ t_word_md5	word_init_md5(char *str)
 	word.word[1] = 0xefcdab89;
 	word.word[2] = 0x98badcfe;
 	word.word[3] = 0x10325476;
-	word_padding_md5(&word, str);
+	word_padding_md5(&word, str, size);
 	printf("End init md5\n");
 	return (word);
 }
