@@ -90,8 +90,9 @@ int main(int ac, char **av)
 		int count = arg.pos_first_pathfile;
 		while (count < ac)
 		{
+			size_t size = 0;
 			printf("Get file : %s\n", av[count]);
-			tstr = ft_file_return_data_end_caract(av[count], 10);
+			tstr = ft_file_return_data_end_caract_size(av[count], 10, &size);
 			printf("----\n");
 			if (tstr)
 			{

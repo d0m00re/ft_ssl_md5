@@ -35,7 +35,7 @@ void	word_padding_md5(t_word_md5 *word, char *str)
 	*b64 = (init_len-1)*8;
 	((uint8_t *)word->msg)[init_len - 1] = 128;
 	word->nb_turn = word->len / 64;
-	//printf("word->len : %ld | %ld\n", word->len, word->nb_turn);
+	printf("word->len : %ld | %ld\n", word->len, word->nb_turn);
 }
 
 t_word_md5	word_init_md5(char *str)
