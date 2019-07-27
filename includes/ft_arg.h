@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 16:04:59 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/25 16:08:16 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/27 14:42:50 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct	s_arg
 	short int	r;
 	short int	file;
 	char		*name_file;
-	int		pos_first_pathfile;
+	int			pos_first_pathfile;
 	short int	error;
 }				t_arg;
 
