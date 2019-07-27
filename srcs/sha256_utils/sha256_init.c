@@ -1,68 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sha256_init.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/27 14:21:15 by alhelson          #+#    #+#             */
+/*   Updated: 2019/07/27 14:22:48 by alhelson         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_sha256.h"
 #include "ft_stdlib.h"
 #include "ft_string.h"
 
-void	display_hex_string(uint8_t *str, size_t len)
+/*
+** void	display_hex_string(uint8_t *str, size_t len)
+** {
+**	size_t	count;
+**
+**	count = 0;
+**	printf("Display padding :\n[\n");
+**	while (count < len)
+**	{
+**		printf("%x ", str[count]);
+**		count++;
+**	}
+**	printf("]\n");
+** }
+*/
+
+void				swap32_n(uint32_t *data, size_t len)
 {
-	size_t	count;
+	size_t			count;
+	uint32_t		tmp;
 
 	count = 0;
-	printf("Display padding :\n[\n");
 	while (count < len)
 	{
-		printf("%x ", str[count]);
+		data[count] = swap32(data[count]);
 		count++;
 	}
-	printf("]\n");
+	tmp = data[count - 1];
+	data[count - 1] = swap32(data[count - 2]);
+	data[count - 2] = swap32(tmp);
 }
 
-// same of smd5 init - merger next version
-void	word_padding_sha256(t_word_sha256 *word, char *str, size_t size)
+/*
+** same of smd5 init - merger next version
+** size total : %512 == 0
+** format data n % 512 == 448 + 64 bits (size0
+** convert stri g in little endianess
+*/
+
+void				word_padding_sha256(t_word_sha256 *word,\
+	char *str, size_t size)
 {
-	size_t init_len;
-	size_t size_to_add; // taille a ajouter pour obtenir une string n % 512 == 448
-	size_t count;
-	uint8_t *b8;
-	uint64_t *b64;
+	size_t			init_len;
+	size_t			size_to_add;
+	uint8_t			*b8;
+	uint64_t		*b64;
 
 	size_to_add = 0;
 	init_len = size + 1;
 	while ((init_len + size_to_add) % 64 != 56)
 		size_to_add++;
-	// 64 for len msg
-	if (!(word->msg = (uint32_t *)(malloc(sizeof(char) * (init_len + size_to_add) + 64))))
+	if (!(word->msg = (uint32_t *)(malloc(sizeof(char) *\
+	(init_len + size_to_add) + 64))))
 		exit(1);
 	word->len = (init_len + size_to_add + 64 / 8);
 	ft_bzero((void *)word->msg, word->len);
 	ft_memcpy((char *)word->msg, str, size);
-
-
-	count = 0;
 	((uint8_t *)word->msg)[init_len - 1] = 128;
-	// a reverse
-
 	b8 = &(((uint8_t *)word->msg)[word->len - 8]);
 	b64 = (uint64_t *)(b8);
-	*b64 = (init_len-1) * 8;
+	*b64 = (init_len - 1) * 8;
 	word->nb_turn = word->len / 64;
-	// reverse 32 bits words
-	while (count < (word->len / 4))
-	{
-		word->msg[count] = swap32(word->msg[count]);
-		count++;
-	}
-	//display_hex_string((uint8_t *)word->msg, word->len);
-	uint32_t tmp;
-	tmp = word->msg[count-1];
-	word->msg[count-1] = swap32(word->msg[count-2]);
-	word->msg[count-2] = swap32(tmp);
-
-	//display_hex_string((uint8_t *)word->msg, word->len);
+	swap32_n(word->msg, word->len / 4);
 }
 
-t_word_sha256	word_init_sha256(char *str, size_t size)
+t_word_sha256		word_init_sha256(char *str, size_t size)
 {
-	t_word_sha256 word;
+	t_word_sha256	word;
 
 	bzero(&word, sizeof(word));
 	word.word[0] = 0x6a09e667;
