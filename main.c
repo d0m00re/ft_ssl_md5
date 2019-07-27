@@ -92,7 +92,8 @@ int main(int ac, char **av)
 		{
 			size_t size = 0;
 			printf("Get file : %s\n", av[count]);
-			tstr = ft_file_return_data_end_caract_size(av[count], 10, &size);
+			//tstr = ft_file_return_data_end_caract_size(av[count], 10, &size);
+			tstr = ft_file_return_data_size(av[count], &size);
 			printf("----\n");
 			if (tstr)
 			{

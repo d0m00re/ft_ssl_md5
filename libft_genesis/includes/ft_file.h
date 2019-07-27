@@ -31,4 +31,6 @@ char	*ft_file_return_data_end_caract(char *name, char end);
 
 char	*ft_file_return_data_end_caract_size(char *name, char end, size_t *size);
 
+char	*ft_file_return_data_size(char *name, size_t *size);
+
 #endif

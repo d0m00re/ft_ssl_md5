@@ -80,3 +80,21 @@ char            *ft_file_return_data_end_caract_size(char *name, char end, size_
 	str[*size] = 0;
 	return (str);
 }
+
+char            *ft_file_return_data_size(char *name, size_t *size)
+{
+	char	*str;
+	int	fd;
+
+	*size = ft_file_size2(name);
+	if (!name || *size <= 0)
+		return (0);
+	str = malloc(sizeof(char) * (*size + 1));
+	if (!str)
+		return (0);
+	fd = open(name, O_RDONLY);
+	read(fd, str, *size);
+	close(fd);
+	//str[*size - 1] = 0;
+	return (str);
+}

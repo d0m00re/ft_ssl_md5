@@ -6,6 +6,14 @@
 #include <string.h>
 #include "ft_display.h"
 
+void display_hex8(uint8_t *data, size_t size)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		printf("%x ", data[i]);
+	}
+	printf("\n");
+}
 /*
 ** word : data structure who contain update element
 ** data : begin element perform actual hash
@@ -17,7 +25,10 @@ void	word_padding_md5(t_word_md5 *word, char *str, size_t size)
 	size_t init_len;
 	size_t size_to_add; // taille a ajouter pour obtenir une string n % 512 == 448
 
-	printf("--->size : %lu\n", size);
+	printf("original string :\n");
+//	display_hex8((uint8_t *)str, size);
+
+	printf("|--->size : %lu\n", size);
 	size_to_add = 0;
 	//init_len = strlen(str) + 1;
 	init_len = size + 1;
@@ -41,6 +52,9 @@ void	word_padding_md5(t_word_md5 *word, char *str, size_t size)
 	((uint8_t *)word->msg)[init_len - 1] = 128;
 	word->nb_turn = word->len / 64;
 	printf("word->len : %ld | %ld\n", word->len, word->nb_turn);
+
+//	display_hex8((uint8_t *)word->msg, word->len);
+//	exit(1);
 }
 
 t_word_md5	word_init_md5(char *str, size_t size)
