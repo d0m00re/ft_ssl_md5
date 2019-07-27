@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 23:13:06 by alhelson          #+#    #+#             */
-/*   Updated: 2018/03/17 23:18:04 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/27 15:22:03 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ char			**ft_strsplit(char const *s, char c)
 	return ((char **)str);
 }
 
-void		ft_strfreesplit(char **data)
+void			ft_strfreesplit(char **data)
 {
-	int c;
+	int			c;
 
 	c = 0;
 	if (!data)

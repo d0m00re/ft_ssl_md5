@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 15:30:30 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/25 15:32:14 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/27 15:22:27 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 **  printf("%d\n",  is_with_delimiter("md5|sha256", "sdfsdfsfsss", '|'));
 **                return 0
 */
+
 int			substring_is_present_with_delimiter(char *pattern,\
 			char *elem, char sep)
 {

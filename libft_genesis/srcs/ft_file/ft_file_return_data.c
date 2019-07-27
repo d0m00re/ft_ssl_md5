@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 23:03:06 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/25 15:25:24 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/27 15:20:47 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,10 @@ char		*ft_file_return_data(char *name)
 	return (str);
 }
 
-#include <stdio.h>
-
 char		*ft_file_return_data_end_caract(char *name, char end)
 {
 	char	*str;
-	size_t		size;
+	size_t	size;
 	int		fd;
 
 	size = ft_file_size(name);
@@ -60,14 +58,13 @@ char		*ft_file_return_data_end_caract(char *name, char end)
 	return (str);
 }
 
-char            *ft_file_return_data_end_caract_size(char *name, char end, size_t *size)
+char		*ft_file_return_data_end_caract_size(char *name,\
+	char end, size_t *size)
 {
 	char	*str;
-	int	fd;
+	int		fd;
 
-	printf("get file size :)\n");
 	*size = ft_file_size2(name);
-	printf("file size : %ld\n", *size);
 	if (!name || *size <= 0)
 		return (0);
 	str = malloc(sizeof(char) * (*size + 2));
@@ -81,10 +78,10 @@ char            *ft_file_return_data_end_caract_size(char *name, char end, size_
 	return (str);
 }
 
-char            *ft_file_return_data_size(char *name, size_t *size)
+char		*ft_file_return_data_size(char *name, size_t *size)
 {
 	char	*str;
-	int	fd;
+	int		fd;
 
 	*size = ft_file_size2(name);
 	if (!name || *size <= 0)
@@ -95,6 +92,5 @@ char            *ft_file_return_data_size(char *name, size_t *size)
 	fd = open(name, O_RDONLY);
 	read(fd, str, *size);
 	close(fd);
-	//str[*size - 1] = 0;
 	return (str);
 }
