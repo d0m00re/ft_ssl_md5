@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall
 NAME = hash_bitch
 MAIN_NAME = hash
 SRC_PATH = srcs

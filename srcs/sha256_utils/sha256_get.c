@@ -13,7 +13,7 @@
 #include "ft_sha256.h"
 #include "ft_string.h"
 
-char				*sha256_get(char *str)
+char				*sha256_get(char *str, size_t size_str)
 {
 	t_word_sha256	word;
 	char			*hash;
@@ -22,8 +22,8 @@ char				*sha256_get(char *str)
 	size = 8 * 8 + 1;
 	if (!(hash = malloc(sizeof(char) * size)))
 		return (0);
-	bzero(hash, size);
-	word = word_init_sha256(str);
+	ft_bzero(hash, size);
+	word = word_init_sha256(str, size_str);
 	sha256_run(&word);
 	store_hex128_to_32_char(hash, word.word, 8);
 	return (hash);

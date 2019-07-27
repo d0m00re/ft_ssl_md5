@@ -20,7 +20,7 @@ char			*md5_get(char *str, size_t size_str)
 	size_t		size;
 
 	size = 8 * 4 + 1;
-	if (!(hash = malloc(size)))
+	if (!(hash = malloc(sizeof(char) * size)))
 		return (0);
 	ft_bzero(hash, size);
 	word = word_init_md5(str, size_str);

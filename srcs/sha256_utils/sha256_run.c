@@ -1,6 +1,7 @@
 #include "ft_sha256.h"
 #include "ft_stdlib.h"
 #include <stdio.h>
+#include "ft_string.h"
 
 void	sha256_process(t_word_sha256 *word, uint32_t *data)
 {
@@ -8,7 +9,7 @@ void	sha256_process(t_word_sha256 *word, uint32_t *data)
 	uint32_t w[64];
 	uint32_t tmp[8];
 
-	bzero(w, sizeof(uint32_t) * 64);
+	ft_bzero(w, sizeof(uint32_t) * 64);
 	// 1 ) repare the message schedule w
 	//printf("Step 1\n");
 	while (count < 16)

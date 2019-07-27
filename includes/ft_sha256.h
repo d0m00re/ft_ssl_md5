@@ -33,7 +33,7 @@ void					sha256_run(t_word_sha256 *word);
 
 void					sha256_destroy(t_word_sha256 *word);
 
-t_word_sha256			word_init_sha256(char *str);
+t_word_sha256			word_init_sha256(char *str, size_t size);
 
 char					*sha256_get(char *str, size_t size);
 
