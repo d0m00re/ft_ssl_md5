@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   md5_get.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 14:08:25 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/27 12:44:21 by alhelson         ###   ########.fr       */
+/*   Created: 2019/07/27 13:21:45 by alhelson          #+#    #+#             */
+/*   Updated: 2019/07/27 13:21:59 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_md5.h"
 #include "ft_string.h"
 
-char			*md5_get(char *str, size_t size_str)
+void				*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	t_word_md5	word;
-	char		*hash;
-	size_t		size;
+	char			*dest2;
+	const char		*src2;
 
-	size = 8 * 4 + 1;
-	if (!(hash = malloc(size)))
-		return (0);
-	ft_bzero(hash, size);
-	word = word_init_md5(str, size_str);
-	md5_run(&word);
-	store_hex128_to_32_char(hash, word.word, 4);
-	return (hash);
+	dest2 = (char *)dst;
+	src2 = (char *)src;
+	while (n > 0)
+	{
+		*dest2 = *src2;
+		dest2++;
+		src2++;
+		n--;
+	}
+	return (dst);
 }

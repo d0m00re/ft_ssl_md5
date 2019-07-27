@@ -15,6 +15,10 @@
 # include <string.h>
 # include <stdint.h>
 
+void		*ft_memcpy(void *dst, const void *src, size_t n);
+
+void		ft_bzero(void *s, size_t n);
+
 size_t		ft_strlen(const char *s);
 
 int			ft_strcmp(const char *s1, const char *s2);

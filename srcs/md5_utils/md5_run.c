@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_md5.h"
+#include "ft_string.h"
 
 static uint32_t		leftrotate(uint32_t x, uint32_t c)
 {
@@ -50,7 +51,7 @@ static void			md5_process(t_word_md5 *word, uint32_t *data)
 	uint32_t		temp;
 
 	tmp[4] = 0;
-	memcpy(tmp, word->word, sizeof(uint32_t) * 4);
+	ft_memcpy(tmp, word->word, sizeof(uint32_t) * 4);
 	while (tmp[4] < 64)
 	{
 		md5_process_core(&f, &g, tmp, tmp[4]);

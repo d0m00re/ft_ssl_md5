@@ -17,6 +17,7 @@
 #include <stdint.h>
 #include <string.h>
 #include "ft_display.h"
+#include "ft_string.h"
 
 /*
 ** void display_hex8(uint8_t *data, size_t size)
@@ -53,8 +54,8 @@ void			word_padding_md5(t_word_md5 *word, char *str, size_t size)
 	(init_len + size_to_add) + 64))))
 		exit(1);
 	word->len = (init_len + size_to_add + 64 / 8);
-	bzero((void *)word->msg, word->len);
-	memcpy(word->msg, str, size);
+	ft_bzero((void *)word->msg, word->len);
+	ft_memcpy(word->msg, str, size);
 	b8 = &(((uint8_t *)word->msg)[word->len - 8]);
 	b64 = (uint64_t *)(b8);
 	*b64 = (init_len - 1) * 8;
