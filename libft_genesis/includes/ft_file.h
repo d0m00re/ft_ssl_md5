@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:57:55 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/25 15:33:27 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/27 15:22:57 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char	*ft_file_return_data(char *name);
 
 char	*ft_file_return_data_end_caract(char *name, char end);
 
-char	*ft_file_return_data_end_caract_size(char *name, char end, size_t *size);
+char	*ft_file_return_data_end_caract_size(char *name,\
+		char end, size_t *size);
 
 char	*ft_file_return_data_size(char *name, size_t *size);
 
