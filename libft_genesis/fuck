@@ -1,0 +1,85 @@
+[1;33m[ CLEAN DIRECTORY ]
+
+[1;33m[ CLEAN DIRECTORY AND libft.a ]
+
+echo  srcs/ft_file
+srcs/ft_file
+echo  srcs/ft_file
+srcs/ft_file
+echo  srcs/ft_file
+srcs/ft_file
+[1;34m[ COMPILE & ASSEMBLE STEPS : DISPLAY ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : DISPLAY ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : DISPLAY ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : DISPLAY ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : DISPLAY ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STRING ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STDLIB ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : STDLIB ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : LINKED LIST ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : LINKED LIST ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : LINKED LIST ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : LINKED LIST ] 
+
+[1;34m[ COMPILE & ASSEMBLE STEPS : LINKED LIST ] 
+
+echo  srcs/ft_2d_tab/ft_2dtab_int
+srcs/ft_2d_tab/ft_2dtab_int
+echo  srcs/ft_2d_tab/ft_2dtab_int
+srcs/ft_2d_tab/ft_2dtab_int
+echo  srcs/ft_2d_tab/ft_2dtab_int
+srcs/ft_2d_tab/ft_2dtab_int
+echo  srcs/ft_2d_tab/ft_2dtab_int
+srcs/ft_2d_tab/ft_2dtab_int
+echo  srcs/string_resize
+srcs/string_resize
+echo  srcs/string_resize
+srcs/string_resize
+echo  srcs/string_resize
+srcs/string_resize
+echo  srcs/string_resize
+srcs/string_resize
+ar rc libft.a ./objs/ft_file_exist.o ./objs/ft_file_return_data.o ./objs/ft_file_size.o ./objs/ft_file_exist.o ./objs/ft_file_return_data.o ./objs/ft_file_size.o ./objs/ft_putchar.o ./objs/ft_putstr.o ./objs/display_hex.o ./objs/ft_putnbr.o ./objs/ft_putendl.o ./objs/ft_strlen.o ./objs/ft_strcmp.o ./objs/ft_strdup.o ./objs/ft_strcpy.o ./objs/ft_strcat.o ./objs/replace.o ./objs/ft_strsplit.o ./objs/ft_isalnum.o ./objs/ft_isalpha.o ./objs/ft_isascii.o ./objs/ft_isdigit.o ./objs/ft_isprint.o ./objs/ft_isseparator.o ./objs/substring_is_present_with_delimiter.o ./objs/store_hex128_to_32_char.o ./objs/ft_memcpy.o ./objs/ft_bzero.o ./objs/ft_atoi.o ./objs/swap.o ./objs/ft_lstcreate_elem.o ./objs/ft_lstpush_back.o ./objs/ft_lstpush_front.o ./objs/ft_lstdestroy.o ./objs/ft_lstdisplay.o  ./objs/ft_file_exist.o ./objs/ft_file_return_data.o ./objs/ft_file_size.o ./objs/make_2dtab_int.o ./objs/destroy_2dtab_int.o ./objs/get_value_2dtab_int.o ./objs/set_value_2dtab_int.o ./objs/string_resize_make.o ./objs/string_resize_destroy.o ./objs/string_resize_add_char.o ./objs/string_resize_del_char.o

@@ -9,6 +9,7 @@
 #include "ft_sha256.h"
 #include "ft_arg.h"
 #include "ft_file.h"
+#include "ft_display.h"
 
 /*
 ** ajouter le bit "1" au message
@@ -49,6 +50,14 @@ char *get_fd0(void)
 	return (buffer);
 }
 
+void	display_hash_name(int hash_num)
+{
+	if (hash_num == 0)
+		ft_putstr("MD5 (");
+	else
+		ft_putstr("SHA256 (");
+}
+
 int	main(int ac, char **av)
 {
 	char *(*hash[])(char *str, size_t size) = {md5_get, sha256_get};
@@ -67,14 +76,23 @@ int	main(int ac, char **av)
 	if (arg.p)
 	{
 		buff = get_fd0();
+		ft_putstr(buff);
 		tstr = hash[arg.type_hash - 1](buff, strlen(buff));//md5_get(buff);
-		printf("md5 generation fd 0: %s\n", tstr);
+		ft_putstr(tstr);
+		ft_putchar('\n');
 		free(tstr);
+		free(buff);
 	}
 	if (arg.s)
 	{
 		tstr = hash[arg.type_hash - 1](arg.string, strlen(arg.string));
-		printf("md generation with -s : %s\n", tstr);
+
+		display_hash_name(arg.type_hash - 1);
+		ft_putstr("\"");
+		ft_putstr(arg.string);
+		ft_putstr("\") = ");
+		ft_putstr(tstr);
+		ft_putchar('\n');
 		free(tstr);
 	}
 	if (arg.file)
@@ -83,9 +101,7 @@ int	main(int ac, char **av)
 		while (count < ac)
 		{
 			size_t size = 0;
-			printf("Get file : %s\n", av[count]);
 			tstr = ft_file_return_data_size(av[count], &size);
-			printf("----\n");
 			if (tstr)
 			{
 				char *tstr2 = hash[arg.type_hash - 1](tstr, size);
