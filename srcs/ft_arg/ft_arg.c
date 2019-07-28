@@ -76,7 +76,7 @@ t_arg		manage_arg(int ac, char **av)
 	t_arg	arg;
 	int		count;
 
-	bzero(&arg, sizeof(arg));
+	ft_bzero(&arg, sizeof(arg));
 	if (arg_update_hash(&arg, av[1]))
 		return (arg);
 	count = 2;

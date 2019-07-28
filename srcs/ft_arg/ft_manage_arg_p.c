@@ -4,16 +4,16 @@
 
 static char *get_fd0(void)
 {
-        char *buffer;
-        int count;
+	char *buffer;
+	int count;
 
-        count = 0;
-        if (!(buffer = malloc(sizeof(char) * 10000)))
-                return (0);
-        bzero(buffer, 10000);
-        while (read(0, &(buffer[count]), 1) && buffer[count] != 10)
-                count++;
-        return (buffer);
+	count = 0;
+	if (!(buffer = malloc(sizeof(char) * 10000)))
+		return (0);
+	ft_bzero(buffer, 10000);
+	while (read(0, &(buffer[count]), 1) && buffer[count] != 10)
+		count++;
+	return (buffer);
 }
 
 
