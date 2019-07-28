@@ -23,8 +23,8 @@ extern const uint32_t	g_sha256_k[];
 
 typedef struct			s_word_sha256
 {
+	uint32_t                        *msg;
 	uint32_t			word[8];
-	uint32_t			*msg;
 	size_t				len;
 	size_t				nb_turn;
 }						t_word_sha256;

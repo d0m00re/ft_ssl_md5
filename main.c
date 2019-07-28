@@ -19,22 +19,11 @@
 ** 512 / 8 : 64 octet
 */
 
-int ft_usage(char *str)
+int ft_usage(char *str, int ret)
 {
 	ft_putstr(str);
-	return (1);
+	return (ret);
 }
-
-/*
-** void arg_tostring(t_arg arg)
-** {
-**	printf("type hash : %d\n", arg.type_hash);
-**	printf("q : %d| p : %d | s : %d | r : %d\n", arg.q, arg.p, arg.s, arg.r);
-**	printf("string --> %s\n", arg.string);
-**	printf("file : %d | name file :%s\n", arg.file, arg.name_file);
-**	printf("error : %d\n", arg.error);
-**}
-*/
 
 char *get_fd0(void)
 {
@@ -58,6 +47,35 @@ void	display_hash_name(int hash_num)
 		ft_putstr("SHA256 (");
 }
 
+void display_hash_string_and_file(char *hash, t_arg arg, char sep, char *name)
+{
+	if (!(arg.r))
+	{
+		if (arg.q == 0)
+		{
+			display_hash_name(arg.type_hash - 1);
+			ft_putchar(sep);
+			ft_putstr(name);
+			ft_putchar(sep);
+			ft_putstr(") = ");
+		}
+		ft_putstr(hash);
+		ft_putchar('\n');
+	}
+	else
+	{
+		ft_putstr(hash);
+		if (arg.q == 0)
+		{
+			ft_putstr("\t");
+			ft_putchar(sep);
+			ft_putstr(name);
+			ft_putchar(sep);
+		}
+		ft_putstr("\n");
+	}
+}
+
 int	main(int ac, char **av)
 {
 	char *(*hash[])(char *str, size_t size) = {md5_get, sha256_get};
@@ -65,19 +83,19 @@ int	main(int ac, char **av)
 	char *buff;
 	char *tstr;
 
+	if (ac < 2)
+		return (ft_usage("usage:\n\t./hash [md5/sha256] [string]\n", 1));
 	arg = manage_arg(ac, av);
 	if (arg.error || arg.type_hash == 0)
-	{
-		ft_usage("usage:\n\t./hash [md5/sha256] [string]\n");
-		return (arg.error);
-	}
+		return (ft_usage("usage:\n\t./hash [md5/sha256] [string]\n", arg.error));
 	buff = 0;
 	tstr = 0;
 	if (arg.p)
 	{
 		buff = get_fd0();
-		ft_putstr(buff);
-		tstr = hash[arg.type_hash - 1](buff, strlen(buff));//md5_get(buff);
+		if (arg.pp)
+			ft_putstr(buff);
+		tstr = hash[arg.type_hash - 1](buff, ft_strlen(buff));
 		ft_putstr(tstr);
 		ft_putchar('\n');
 		free(tstr);
@@ -85,14 +103,8 @@ int	main(int ac, char **av)
 	}
 	if (arg.s)
 	{
-		tstr = hash[arg.type_hash - 1](arg.string, strlen(arg.string));
-
-		display_hash_name(arg.type_hash - 1);
-		ft_putstr("\"");
-		ft_putstr(arg.string);
-		ft_putstr("\") = ");
-		ft_putstr(tstr);
-		ft_putchar('\n');
+		tstr = hash[arg.type_hash - 1](arg.string, ft_strlen(arg.string));
+		display_hash_string_and_file(tstr, arg, '\"', arg.string);
 		free(tstr);
 	}
 	if (arg.file)
@@ -101,14 +113,15 @@ int	main(int ac, char **av)
 		while (count < ac)
 		{
 			size_t size = 0;
-			tstr = ft_file_return_data_size(av[count], &size);
-			if (tstr)
+			if (!(tstr = ft_file_return_data_size(av[count], &size)))
 			{
-				char *tstr2 = hash[arg.type_hash - 1](tstr, size);
-				printf("%s\t%s\n", tstr2, av[count]);
-				free(tstr);
-				free(tstr2);
+				count++;
+				continue;
 			}
+			char *tstr2 = hash[arg.type_hash - 1](tstr, size);
+			display_hash_string_and_file(tstr2, arg, 0, av[count]);
+			free(tstr);
+			free(tstr2);
 			count++;
 		}
 	}

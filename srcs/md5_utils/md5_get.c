@@ -26,5 +26,6 @@ char			*md5_get(char *str, size_t size_str)
 	word = word_init_md5(str, size_str);
 	md5_run(&word);
 	store_hex128_to_32_char(hash, word.word, 4);
+	md5_destroy(&word);
 	return (hash);
 }

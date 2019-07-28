@@ -23,8 +23,8 @@ extern const uint32_t	g_k[];
 
 typedef struct			s_word_md5
 {
-	uint32_t			word[4];
 	uint32_t			*msg;
+	uint32_t			word[4];
 	size_t				len;
 	size_t				nb_turn;
 }						t_word_md5;

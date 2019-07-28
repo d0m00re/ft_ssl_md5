@@ -42,7 +42,10 @@ int			arg_update_core(t_arg *arg, char **av, int ac, int *count)
 
 	tmp = substring_is_present_with_delimiter("-p|-q|-s|-r", av[*count], '|');
 	if (tmp == 1)
+	{
 		arg->p = 1;
+		arg->pp = 1;
+	}
 	else if (tmp == 2)
 		arg->q = 1;
 	else if (tmp == 3)

@@ -26,5 +26,6 @@ char				*sha256_get(char *str, size_t size_str)
 	word = word_init_sha256(str, size_str);
 	sha256_run(&word);
 	store_hex128_to_32_char(hash, word.word, 8);
+	sha256_destroy(&word);
 	return (hash);
 }

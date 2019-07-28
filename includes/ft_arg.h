@@ -25,6 +25,7 @@ typedef struct	s_arg
 	short int	type_hash;
 	short int	q;
 	short int	p;
+	short int	pp;
 	char		*string;
 	short int	s;
 	short int	r;

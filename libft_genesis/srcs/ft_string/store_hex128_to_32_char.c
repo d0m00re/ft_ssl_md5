@@ -55,3 +55,16 @@ void			store_hex128_to_32_char(char *target, uint32_t *word,\
 		c++;
 	}
 }
+
+void                    store_hex128_to_32_char_rev(char *target, uint32_t *word,\
+                        size_t nb_word)
+{
+	size_t		c;
+
+	c = 0;
+	while (c < nb_word)
+	{
+		store_hex32_to_8char(&(target[8 * c]), word[nb_word - (c + 1)]);
+		c++;
+	}
+}
