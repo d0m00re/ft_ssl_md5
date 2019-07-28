@@ -83,7 +83,7 @@ t_word_sha256		word_init_sha256(char *str, size_t size)
 {
 	t_word_sha256	word;
 
-	bzero(&word, sizeof(word));
+	ft_bzero(&word, sizeof(word));
 	word.word[0] = 0x6a09e667;
 	word.word[1] = 0xbb67ae85;
 	word.word[2] = 0x3c6ef372;
