@@ -19,10 +19,10 @@ INC_PATH= ./$(LIBFT_PATH)/$(INC)
 #################################
 ############ SOURCES
 #################################
-SRC_M_UTILS = ft_usage.c
+SRC_M_UTILS = ft_usage.c display_hash_name.c display_hash_string_and_file.c
 SRC_M_MD5 =     md5_global.c    md5_init.c  md5_process.c  md5_run.c md5_destroy.c md5_get.c
 SRC_M_SHA256 =  sha256_global.c sha256_get.c  sha256_init.c sha256_run.c  sha256_logical.c sha256_logical2.c sha256_destroy.c
-SRC_M_ARG = ft_arg.c
+SRC_M_ARG = ft_arg.c ft_manage_arg_p.c ft_manage_arg_file.c ft_manage_arg_s.c
 
 #############################
 ############ OBJECT GENERATION

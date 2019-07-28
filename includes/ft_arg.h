@@ -39,4 +39,10 @@ t_arg			manage_arg(int ac, char **av);
 
 void			arg_tostring(t_arg arg);
 
+void			ft_manage_arg_p(t_arg arg, char *(hash)(char *str, size_t size));
+
+void			ft_manage_arg_s(t_arg arg, char *(hash)(char *str, size_t size));
+
+void			ft_manage_arg_file(t_arg arg, char *(hash)(char *str, size_t size), char **av, int ac);
+
 #endif
