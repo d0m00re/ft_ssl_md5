@@ -10,6 +10,7 @@
 #include "ft_arg.h"
 #include "ft_file.h"
 #include "ft_display.h"
+#include "ft_utils.h"
 
 /*
 ** ajouter le bit "1" au message
@@ -18,12 +19,6 @@
 ** 448 / 8 : 56 octet
 ** 512 / 8 : 64 octet
 */
-
-int ft_usage(char *str, int ret)
-{
-	ft_putstr(str);
-	return (ret);
-}
 
 char *get_fd0(void)
 {
