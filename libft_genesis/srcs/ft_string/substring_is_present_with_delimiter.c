@@ -37,7 +37,7 @@ int			substring_is_present_with_delimiter(char *pattern,\
 	act_pattern = 1;
 	while (split && split[act_pattern - 1])
 	{
-		if (strcmp(split[act_pattern - 1], elem) == 0)
+		if (ft_strcmp(split[act_pattern - 1], elem) == 0)
 		{
 			ft_strfreesplit(split);
 			return (act_pattern);
