@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 15:59:35 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/25 15:59:54 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/29 15:23:27 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char				*sha256_get(char *str, size_t size_str)
 	t_word_sha256	word;
 	char			*hash;
 	size_t			size;
-	int error;
+	int				error;
 
 	error = 0;
 	size = 8 * 8 + 1;

@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 14:21:15 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/27 14:22:48 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/29 15:20:28 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void				swap32_n(uint32_t *data, size_t len)
 ** convert stri g in little endianess
 */
 
-int				word_padding_sha256(t_word_sha256 *word,\
+int					word_padding_sha256(t_word_sha256 *word,\
 	char *str, size_t size)
 {
 	size_t			init_len;

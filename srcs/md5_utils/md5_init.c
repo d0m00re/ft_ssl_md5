@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 12:57:52 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/27 13:02:17 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/29 15:20:41 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 ** init_len + size_to_add need to be 448 with mod 512
 */
 
-int			word_padding_md5(t_word_md5 *word, char *str, size_t size)
+int				word_padding_md5(t_word_md5 *word, char *str, size_t size)
 {
 	size_t		init_len;
 	size_t		size_to_add;

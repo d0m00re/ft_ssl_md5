@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 14:08:25 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/27 12:44:21 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/29 15:17:40 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char			*md5_get(char *str, size_t size_str)
 	t_word_md5	word;
 	char		*hash;
 	size_t		size;
-	int		error;
+	int			error;
 
 	error = 0;
 	size = 8 * 4 + 1;

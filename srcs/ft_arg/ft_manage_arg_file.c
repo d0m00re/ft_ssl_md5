@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:41:36 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:41:56 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/29 15:23:01 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,14 @@ static void		display_error_file(char *name_file, int d_show, int type_hash)
 	ft_putstr(": No such file or directory\n");
 }
 
-void		ft_manage_arg_file(t_arg arg,\
+void			ft_manage_arg_file(t_arg arg,\
 		char *(hash)(char *str, size_t size), char **av, int ac)
 {
-	int		count;
-	size_t	size;
-	char	*tstr2;
-	char	*tstr;
+	int			count;
+	size_t		size;
+	char		*tstr2;
+	char		*tstr;
 
-	tstr = 0;
 	tstr2 = 0;
 	if (arg.file)
 	{
