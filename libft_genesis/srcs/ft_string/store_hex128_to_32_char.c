@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 15:28:48 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/25 15:29:33 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/29 12:49:43 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void			store_hex128_to_32_char(char *target, uint32_t *word,\
 	}
 }
 
-void                    store_hex128_to_32_char_rev(char *target, uint32_t *word,\
-                        size_t nb_word)
+void			store_hex128_to_32_char_rev(char *target, uint32_t *word,\
+	size_t nb_word)
 {
 	size_t		c;
 
