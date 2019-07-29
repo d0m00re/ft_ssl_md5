@@ -53,7 +53,7 @@ void				swap32_n(uint32_t *data, size_t len)
 ** convert stri g in little endianess
 */
 
-void				word_padding_sha256(t_word_sha256 *word,\
+int				word_padding_sha256(t_word_sha256 *word,\
 	char *str, size_t size)
 {
 	size_t			init_len;
@@ -67,7 +67,7 @@ void				word_padding_sha256(t_word_sha256 *word,\
 		size_to_add++;
 	if (!(word->msg = (uint32_t *)(malloc(sizeof(char) *\
 	(init_len + size_to_add) + 64))))
-		exit(1);
+		return (10);
 	word->len = (init_len + size_to_add + 64 / 8);
 	ft_bzero((void *)word->msg, word->len);
 	ft_memcpy((char *)word->msg, str, size);
@@ -77,9 +77,10 @@ void				word_padding_sha256(t_word_sha256 *word,\
 	*b64 = (init_len - 1) * 8;
 	word->nb_turn = word->len / 64;
 	swap32_n(word->msg, word->len / 4);
+	return (0);
 }
 
-t_word_sha256		word_init_sha256(char *str, size_t size)
+t_word_sha256		word_init_sha256(char *str, size_t size, int *error)
 {
 	t_word_sha256	word;
 
@@ -92,6 +93,6 @@ t_word_sha256		word_init_sha256(char *str, size_t size)
 	word.word[5] = 0x9b05688c;
 	word.word[6] = 0x1f83d9ab;
 	word.word[7] = 0x5be0cd19;
-	word_padding_sha256(&word, str, size);
+	*error = word_padding_sha256(&word, str, size);
 	return (word);
 }

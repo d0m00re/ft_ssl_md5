@@ -20,10 +20,7 @@ int		ft_file_exist(char *name)
 		return (0);
 	fd = open(name, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_putstr_fd("ft_file_exist : file not exist\n", 2);
 		return (0);
-	}
 	close(fd);
 	return (1);
 }

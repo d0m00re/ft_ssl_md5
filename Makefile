@@ -57,7 +57,7 @@ OBJS = $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
 
 all: $(MAIN_NAME)
 
-$(MAIN_NAME): $(OBJS)
+$(MAIN_NAME): $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
 	make -C $(LIBFT_PATH) &> /dev/null
 	$(CC) $(CFLAGS) $(OBJS)  $(LIBFT_FLAGS)/ -I $(INC_PATH) -I $(INC) -o $(MAIN_NAME)
 

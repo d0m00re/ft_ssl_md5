@@ -18,12 +18,14 @@ char				*sha256_get(char *str, size_t size_str)
 	t_word_sha256	word;
 	char			*hash;
 	size_t			size;
+	int error;
 
+	error = 0;
 	size = 8 * 8 + 1;
-	if (!(hash = malloc(sizeof(char) * size)))
+	word = word_init_sha256(str, size_str, &error);
+	if (error || !(hash = malloc(sizeof(char) * size)))
 		return (0);
 	ft_bzero(hash, size);
-	word = word_init_sha256(str, size_str);
 	sha256_run(&word);
 	store_hex128_to_32_char(hash, word.word, 8);
 	sha256_destroy(&word);

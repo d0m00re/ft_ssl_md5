@@ -39,7 +39,7 @@
 ** init_len + size_to_add need to be 448 with mod 512
 */
 
-void			word_padding_md5(t_word_md5 *word, char *str, size_t size)
+int			word_padding_md5(t_word_md5 *word, char *str, size_t size)
 {
 	size_t		init_len;
 	size_t		size_to_add;
@@ -52,7 +52,7 @@ void			word_padding_md5(t_word_md5 *word, char *str, size_t size)
 		size_to_add++;
 	if (!(word->msg = (uint32_t *)(malloc(sizeof(char) *\
 	(init_len + size_to_add) + 64))))
-		exit(1);
+		return (10);
 	word->len = (init_len + size_to_add + 64 / 8);
 	ft_bzero((void *)word->msg, word->len);
 	ft_memcpy(word->msg, str, size);
@@ -61,13 +61,14 @@ void			word_padding_md5(t_word_md5 *word, char *str, size_t size)
 	*b64 = (init_len - 1) * 8;
 	((uint8_t *)word->msg)[init_len - 1] = 128;
 	word->nb_turn = word->len / 64;
+	return (0);
 }
 
 /*
 ** word in low bit order
 */
 
-t_word_md5		word_init_md5(char *str, size_t size)
+t_word_md5		word_init_md5(char *str, size_t size, int *error)
 {
 	t_word_md5 word;
 
@@ -75,6 +76,6 @@ t_word_md5		word_init_md5(char *str, size_t size)
 	word.word[1] = 0xefcdab89;
 	word.word[2] = 0x98badcfe;
 	word.word[3] = 0x10325476;
-	word_padding_md5(&word, str, size);
+	*error = word_padding_md5(&word, str, size);
 	return (word);
 }

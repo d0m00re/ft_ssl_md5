@@ -41,7 +41,7 @@ void					md5_run(t_word_md5 *word);
 
 void					md5_destroy(t_word_md5 *word);
 
-t_word_md5				word_init_md5(char *str, size_t size);
+t_word_md5				word_init_md5(char *str, size_t size, int *error);
 
 char					*md5_get(char *str, size_t size);
 
