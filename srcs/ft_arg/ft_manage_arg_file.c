@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_manage_arg_file.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/29 12:41:36 by alhelson          #+#    #+#             */
+/*   Updated: 2019/07/29 12:41:56 by alhelson         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_display.h"
 #include "ft_string.h"
 #include "ft_md5.h"
@@ -9,12 +21,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-void	ft_manage_arg_file(t_arg arg, char *(hash)(char *str, size_t size), char **av, int ac)
+void		ft_manage_arg_file(t_arg arg,\
+		char *(hash)(char *str, size_t size), char **av, int ac)
 {
-	int count;
-	size_t size;
-	char *tstr2;
-	char *tstr;
+	int		count;
+	size_t	size;
+	char	*tstr2;
+	char	*tstr;
 
 	tstr = 0;
 	tstr2 = 0;

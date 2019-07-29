@@ -6,14 +6,14 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 15:13:40 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/27 15:15:06 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/29 12:45:48 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_arg.h"
 #include <stdio.h>
 
-int			arg_update_hash(t_arg *arg, char *str)
+static int		arg_update_hash(t_arg *arg, char *str)
 {
 	arg->type_hash =\
 		substring_is_present_with_delimiter("md5|sha256", str, '|');
@@ -22,7 +22,7 @@ int			arg_update_hash(t_arg *arg, char *str)
 	return (arg->error);
 }
 
-int			arg_update_string(t_arg *arg, char **av, int ac, int *count)
+static int		arg_update_string(t_arg *arg, char **av, int ac, int *count)
 {
 	arg->s += 1;
 	(*count)++;
@@ -36,16 +36,19 @@ int			arg_update_string(t_arg *arg, char **av, int ac, int *count)
 	return (0);
 }
 
-int			arg_update_core(t_arg *arg, char **av, int ac, int *count)
+static void		update_arg_pp(t_arg *arg)
 {
-	int		tmp;
+	arg->p = 1;
+	arg->pp = 1;
+}
+
+int				arg_update_core(t_arg *arg, char **av, int ac, int *count)
+{
+	int			tmp;
 
 	tmp = substring_is_present_with_delimiter("-p|-q|-s|-r", av[*count], '|');
 	if (tmp == 1)
-	{
-		arg->p = 1;
-		arg->pp = 1;
-	}
+		update_arg_pp(arg);
 	else if (tmp == 2)
 		arg->q = 1;
 	else if (tmp == 3)
@@ -71,10 +74,10 @@ int			arg_update_core(t_arg *arg, char **av, int ac, int *count)
 ** when we have no string or file, we take fd 0 by default
 */
 
-t_arg		manage_arg(int ac, char **av)
+t_arg			manage_arg(int ac, char **av)
 {
-	t_arg	arg;
-	int		count;
+	t_arg		arg;
+	int			count;
 
 	ft_bzero(&arg, sizeof(arg));
 	if (arg_update_hash(&arg, av[1]))

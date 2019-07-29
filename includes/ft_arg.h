@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 16:04:59 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/27 14:42:50 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/29 12:38:34 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ t_arg			manage_arg(int ac, char **av);
 
 void			arg_tostring(t_arg arg);
 
-void			ft_manage_arg_p(t_arg arg, char *(hash)(char *str, size_t size));
+void			ft_manage_arg_p(t_arg arg, char *(hash)(char *str,\
+				size_t size));
 
-void			ft_manage_arg_s(t_arg arg, char *(hash)(char *str, size_t size));
+void			ft_manage_arg_s(t_arg arg, char *(hash)(char *str,\
+				size_t size));
 
-void			ft_manage_arg_file(t_arg arg, char *(hash)(char *str, size_t size), char **av, int ac);
+void			ft_manage_arg_file(t_arg arg,\
+		char *(hash)(char *str, size_t size), char **av, int ac);
 
 #endif

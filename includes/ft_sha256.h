@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 14:05:22 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/25 16:09:17 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/29 12:39:18 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ extern const uint32_t	g_sha256_k[];
 
 typedef struct			s_word_sha256
 {
-	uint32_t                        *msg;
+	uint32_t			*msg;
 	uint32_t			word[8];
 	size_t				len;
 	size_t				nb_turn;
