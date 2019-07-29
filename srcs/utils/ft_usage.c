@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_usage.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/29 12:31:22 by alhelson          #+#    #+#             */
+/*   Updated: 2019/07/29 12:31:42 by alhelson         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_display.h"
 
-int ft_usage(char *str, int ret)
+int	ft_usage(int ret)
 {
-	ft_putstr(str);
+	ft_putstr("usage:\n\t./hash [md5/sha256] [string]\n");
 	return (ret);
 }
-
