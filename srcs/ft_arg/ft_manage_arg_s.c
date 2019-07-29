@@ -1,5 +1,6 @@
 #include "ft_arg.h"
 #include "ft_string.h"
+#include "ft_utils.h"
 #include <stdlib.h>
 
 void	ft_manage_arg_s(t_arg arg, char *(hash)(char *str, size_t size))
