@@ -57,8 +57,8 @@ OBJS = $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
 
 all: $(MAIN_NAME)
 
-$(MAIN_NAME): libft $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
-	#make -C $(LIBFT_PATH) &> /dev/null
+$(MAIN_NAME): $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
+	make -C $(LIBFT_PATH) &> /dev/null
 	$(CC) $(CFLAGS) $(OBJS)  $(LIBFT_FLAGS)/ -I $(INC_PATH) -I $(INC) -o $(MAIN_NAME)
 
 # rep generation file
@@ -75,16 +75,16 @@ $(OBJ_ARG): $(OBJ_PATH)%.o : $(SRC_PATH)/$(SRC_M_ARG_PATH)%.c $(INCLUDES)
 	$(CC) $(CFLAGS) -I $(INC_PATH) -I $(INC) -c $< -o $@
 
 clean: clean_libft
-	$(RM) $(OBJS)
+	$(RM) -f $(OBJS)
 
 fclean: clean fclean_libft
-	$(RM) $(MAIN_NAME)
+	$(RM) -f $(MAIN_NAME)
 
 re : fclean all
 
 #libft rules
 libft:
-	make -C $(LIBFT_PATH)
+	make -C $(LIBFT_PATH) &> /dev/null
 
 fclean_libft:
 	@cd $(LIBFT_PATH) && make fclean

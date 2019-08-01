@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usage.c                                         :+:      :+:    :+:   */
+/*   ft_graph_exist.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:31:22 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:31:42 by alhelson         ###   ########.fr       */
+/*   Created: 2018/03/17 23:05:04 by alhelson          #+#    #+#             */
+/*   Updated: 2018/03/17 23:05:11 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display.h"
+#include "ft_graph.h"
 
-int	ft_usage(int ret)
+e_bool	ft_graph_exist(t_graph *graph)
 {
-	ft_putstr("usage:\n\t./hash [md5/sha256] [-s string]\n");
-	ft_putstr("option: \n");
-	ft_putstr("\t-s : print the sum of the given string\n");
-	ft_putstr("\t-q : quiet mode\n\t-r : reverse format output\n");
-	ft_putstr("\t-p : echo STDIN to STDOUT\n");
-	return (ret);
+	if (graph)
+		return (true);
+	return (false);
 }

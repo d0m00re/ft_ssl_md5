@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usage.c                                         :+:      :+:    :+:   */
+/*   ft_2dtab_int.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:31:22 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:31:42 by alhelson         ###   ########.fr       */
+/*   Created: 2018/03/18 15:56:17 by alhelson          #+#    #+#             */
+/*   Updated: 2018/03/18 15:57:24 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display.h"
+#ifndef FT_2DTAB_INT_H
+# define FT_2DTAB_INT_H
 
-int	ft_usage(int ret)
+# include <stdlib.h>
+
+typedef struct	s_2dtab_int
 {
-	ft_putstr("usage:\n\t./hash [md5/sha256] [-s string]\n");
-	ft_putstr("option: \n");
-	ft_putstr("\t-s : print the sum of the given string\n");
-	ft_putstr("\t-q : quiet mode\n\t-r : reverse format output\n");
-	ft_putstr("\t-p : echo STDIN to STDOUT\n");
-	return (ret);
-}
+	int			**tab;
+	int			size_x;
+	int			size_y;
+}				t_2dtab_int;
+
+t_2dtab_int		*make_2dtab_int(int x, int y);
+
+void			destroy_2dtab_int(t_2dtab_int *tab);
+
+int				get_value_2dtab_int(t_2dtab_int *tab, int x, int y, int *error);
+int				set_value_2dtab_int(t_2dtab_int *tab, int x, int y, int value);
+
+#endif

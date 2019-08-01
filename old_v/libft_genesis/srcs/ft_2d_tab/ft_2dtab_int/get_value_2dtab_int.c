@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usage.c                                         :+:      :+:    :+:   */
+/*   get_value_2dtab_int.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:31:22 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:31:42 by alhelson         ###   ########.fr       */
+/*   Created: 2018/03/17 22:55:29 by alhelson          #+#    #+#             */
+/*   Updated: 2018/03/17 22:55:31 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display.h"
+#include "ft_2dtab_int.h"
 
-int	ft_usage(int ret)
+int	get_value_2dtab_int(t_2dtab_int *tab, int x, int y, int *error)
 {
-	ft_putstr("usage:\n\t./hash [md5/sha256] [-s string]\n");
-	ft_putstr("option: \n");
-	ft_putstr("\t-s : print the sum of the given string\n");
-	ft_putstr("\t-q : quiet mode\n\t-r : reverse format output\n");
-	ft_putstr("\t-p : echo STDIN to STDOUT\n");
-	return (ret);
+	if (!tab || !(tab->tab) || x < tab->size_x || y < tab->size_y)
+	{
+		*error = 1;
+		return (0);
+	}
+	return (tab->tab[y][x]);
 }

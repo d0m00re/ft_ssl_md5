@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   md5_get.c                                          :+:      :+:    :+:   */
+/*   ft_make_graph.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 14:08:25 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 15:17:40 by alhelson         ###   ########.fr       */
+/*   Created: 2018/03/17 23:05:39 by alhelson          #+#    #+#             */
+/*   Updated: 2018/03/17 23:05:50 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_md5.h"
-#include "ft_string.h"
+#include "ft_graph.h"
 
-char			*md5_get(char *str, size_t size_str)
+t_graph		*ft_make_graph(int nb_vertices, e_bool is_oriented)
 {
-	t_word_md5	word;
-	char		*hash;
-	size_t		size;
-	int			error;
+	int		c;
+	t_graph *graph;
 
-	error = 0;
-	size = 8 * 4 + 1;
-	word = word_init_md5(str, size_str, &error);
-	if (error)
+	if (!(graph = malloc(sizeof(t_graph))))
 		return (0);
-	if (!(hash = malloc(sizeof(char) * size)))
+	graph->is_oriented = is_oriented;
+	graph->nb_vertices = nb_vertices;
+	if (!(graph->nodes = malloc(nb_vertices * sizeof(t_node))))
+		return (0);
+	c = 0;
+	while (c < nb_vertices)
 	{
-		free(word.msg);
-		return (0);
+		graph->nodes[c].begin = 0;
+		c++;
 	}
-	ft_bzero(hash, size);
-	md5_run(&word);
-	store_hex128_to_32_char(hash, word.word, 4);
-	md5_destroy(&word);
-	return (hash);
+	return (graph);
 }

@@ -22,7 +22,7 @@ SRC_M_STRING_RESIZE_PATH = string_resize
 SRC_M_TAB2D_PATH = ft_2d_tab
 SRC_M_TAB2D_INT_PATH = $(SRC_M_TAB2D_PATH)/ft_2dtab_int
 
-OBJ_PATH = srcs
+OBJ_PATH = objs
 INC_PATH = includes
 LIB_PATH = libft
 INC=libft/includes

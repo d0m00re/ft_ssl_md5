@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usage.c                                         :+:      :+:    :+:   */
+/*   ft_destroy_graph.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:31:22 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:31:42 by alhelson         ###   ########.fr       */
+/*   Created: 2018/03/17 23:04:08 by alhelson          #+#    #+#             */
+/*   Updated: 2018/03/17 23:04:48 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display.h"
+#include "ft_graph.h"
 
-int	ft_usage(int ret)
+/*
+** del_content : fonction de destruction de liste chainee
+*/
+
+void		ft_destroy_graph(t_graph *graph, void (*del_content)(void *))
 {
-	ft_putstr("usage:\n\t./hash [md5/sha256] [-s string]\n");
-	ft_putstr("option: \n");
-	ft_putstr("\t-s : print the sum of the given string\n");
-	ft_putstr("\t-q : quiet mode\n\t-r : reverse format output\n");
-	ft_putstr("\t-p : echo STDIN to STDOUT\n");
-	return (ret);
+	int		i;
+
+	i = 0;
+	while (i < graph->nb_vertices)
+	{
+		ft_lstdestroy(&graph->nodes[i].begin, del_content);
+		i++;
+	}
+	free(graph->nodes);
+	free(graph);
 }

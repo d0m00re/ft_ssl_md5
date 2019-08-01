@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usage.c                                         :+:      :+:    :+:   */
+/*   md5_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:31:22 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:31:42 by alhelson         ###   ########.fr       */
+/*   Created: 2019/07/24 14:08:14 by alhelson          #+#    #+#             */
+/*   Updated: 2019/07/24 14:08:21 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display.h"
+#include "ft_md5.h"
 
-int	ft_usage(int ret)
+void	md5_destroy(t_word_md5 *word)
 {
-	ft_putstr("usage:\n\t./hash [md5/sha256] [-s string]\n");
-	ft_putstr("option: \n");
-	ft_putstr("\t-s : print the sum of the given string\n");
-	ft_putstr("\t-q : quiet mode\n\t-r : reverse format output\n");
-	ft_putstr("\t-p : echo STDIN to STDOUT\n");
-	return (ret);
+	if (word && word->msg)
+		free(word->msg);
 }

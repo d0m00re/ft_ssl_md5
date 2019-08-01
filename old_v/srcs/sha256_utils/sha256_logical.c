@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usage.c                                         :+:      :+:    :+:   */
+/*   sha256_logical.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:31:22 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:31:42 by alhelson         ###   ########.fr       */
+/*   Created: 2019/07/25 16:03:30 by alhelson          #+#    #+#             */
+/*   Updated: 2019/07/25 16:03:35 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display.h"
+#include <stdint.h>
 
-int	ft_usage(int ret)
+uint32_t	rotr(uint32_t x, uint32_t rot)
 {
-	ft_putstr("usage:\n\t./hash [md5/sha256] [-s string]\n");
-	ft_putstr("option: \n");
-	ft_putstr("\t-s : print the sum of the given string\n");
-	ft_putstr("\t-q : quiet mode\n\t-r : reverse format output\n");
-	ft_putstr("\t-p : echo STDIN to STDOUT\n");
-	return (ret);
+	return (((x >> rot) | (x << (32 - rot))));
+}
+
+uint32_t	ft_shr(uint32_t x, uint32_t shr)
+{
+	return (x >> shr);
+}
+
+uint32_t	f_ch(uint32_t x, uint32_t y, uint32_t z)
+{
+	return ((x & y) ^ ((~x) & z));
+}
+
+uint32_t	f_maj(uint32_t x, uint32_t y, uint32_t z)
+{
+	return ((x & y) ^ (x & z) ^ (y & z));
 }

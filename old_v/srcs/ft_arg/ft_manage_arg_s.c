@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   md5_get.c                                          :+:      :+:    :+:   */
+/*   ft_manage_arg_s.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 14:08:25 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 15:17:40 by alhelson         ###   ########.fr       */
+/*   Created: 2019/07/29 12:41:21 by alhelson          #+#    #+#             */
+/*   Updated: 2019/07/29 12:41:29 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_md5.h"
+#include "ft_arg.h"
 #include "ft_string.h"
+#include "ft_utils.h"
+#include <stdlib.h>
 
-char			*md5_get(char *str, size_t size_str)
+void		ft_manage_arg_s(t_arg arg, char *(hash)(char *str, size_t size))
 {
-	t_word_md5	word;
-	char		*hash;
-	size_t		size;
-	int			error;
+	char	*tstr;
 
-	error = 0;
-	size = 8 * 4 + 1;
-	word = word_init_md5(str, size_str, &error);
-	if (error)
-		return (0);
-	if (!(hash = malloc(sizeof(char) * size)))
+	if (arg.s)
 	{
-		free(word.msg);
-		return (0);
+		tstr = hash(arg.string, ft_strlen(arg.string));
+		display_hash_string_and_file(tstr, arg, '\"', arg.string);
+		free(tstr);
 	}
-	ft_bzero(hash, size);
-	md5_run(&word);
-	store_hex128_to_32_char(hash, word.word, 4);
-	md5_destroy(&word);
-	return (hash);
 }

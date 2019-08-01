@@ -6,22 +6,19 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 23:03:06 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 16:47:52 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/07/27 15:20:47 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_file.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
 
-char			*ft_file_return_data(char *name)
+char		*ft_file_return_data(char *name)
 {
-	char		*str;
-	char		c;
-	int			count;
-	int			size;
-	int			fd;
+	char	*str;
+	char	c;
+	int		count;
+	int		size;
+	int		fd;
 
 	size = ft_file_size(name);
 	if (!name || size <= 0)
@@ -41,11 +38,11 @@ char			*ft_file_return_data(char *name)
 	return (str);
 }
 
-char			*ft_file_return_data_end_caract(char *name, char end)
+char		*ft_file_return_data_end_caract(char *name, char end)
 {
-	char		*str;
-	size_t		size;
-	int			fd;
+	char	*str;
+	size_t	size;
+	int		fd;
 
 	size = ft_file_size(name);
 	if (!name || size <= 0)
@@ -61,11 +58,11 @@ char			*ft_file_return_data_end_caract(char *name, char end)
 	return (str);
 }
 
-char			*ft_file_return_data_end_caract_size(char *name,\
+char		*ft_file_return_data_end_caract_size(char *name,\
 	char end, size_t *size)
 {
-	char		*str;
-	int			fd;
+	char	*str;
+	int		fd;
 
 	*size = ft_file_size2(name);
 	if (!name || *size <= 0)
@@ -81,32 +78,18 @@ char			*ft_file_return_data_end_caract_size(char *name,\
 	return (str);
 }
 
-int				is_file(char *name)
+char		*ft_file_return_data_size(char *name, size_t *size)
 {
-	struct stat	path_stat;
+	char	*str;
+	int		fd;
 
-	stat(name, &path_stat);
-	return (S_ISREG(path_stat.st_mode));
-}
-
-char			*ft_file_return_data_size(char *name, size_t *size)
-{
-	char		*str;
-	int			fd;
-
-	if (is_file(name) == 0)
-		return (0);
 	*size = ft_file_size2(name);
 	if (!name || *size <= 0)
 		return (0);
 	str = malloc(sizeof(char) * (*size + 1));
 	if (!str)
 		return (0);
-	if ((fd = open(name, O_RDONLY)) == -1)
-	{
-		free(str);
-		return (0);
-	}
+	fd = open(name, O_RDONLY);
 	read(fd, str, *size);
 	close(fd);
 	return (str);

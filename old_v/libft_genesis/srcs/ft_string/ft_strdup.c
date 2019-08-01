@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sha256_get.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/25 15:59:35 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 15:23:27 by alhelson         ###   ########.fr       */
+/*   Created: 2018/03/17 23:12:39 by alhelson          #+#    #+#             */
+/*   Updated: 2018/03/17 23:12:49 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sha256.h"
+#include "ft_stdlib.h"
 #include "ft_string.h"
 
-char				*sha256_get(char *str, size_t size_str)
+char				*ft_strdup(const char *s1)
 {
-	t_word_sha256	word;
-	char			*hash;
-	size_t			size;
-	int				error;
+	unsigned int	count;
+	char			*str;
+	unsigned int	size;
 
-	error = 0;
-	size = 8 * 8 + 1;
-	word = word_init_sha256(str, size_str, &error);
-	if (error)
+	count = 0;
+	size = ft_strlen(s1);
+	str = (char *)malloc(sizeof(*str) * (size + 1));
+	if (!str)
 		return (0);
-	if (error || !(hash = malloc(sizeof(char) * size)))
+	while (s1[count] && count < size)
 	{
-		free(word.msg);
-		return (0);
+		str[count] = s1[count];
+		count++;
 	}
-	ft_bzero(hash, size);
-	sha256_run(&word);
-	store_hex128_to_32_char(hash, word.word, 8);
-	sha256_destroy(&word);
-	return (hash);
+	str[count] = '\0';
+	return (str);
 }

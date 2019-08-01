@@ -14,10 +14,6 @@
 
 int	ft_usage(int ret)
 {
-	ft_putstr("usage:\n\t./hash [md5/sha256] [-s string]\n");
-	ft_putstr("option: \n");
-	ft_putstr("\t-s : print the sum of the given string\n");
-	ft_putstr("\t-q : quiet mode\n\t-r : reverse format output\n");
-	ft_putstr("\t-p : echo STDIN to STDOUT\n");
+	ft_putstr("usage:\n\t./hash [md5/sha256] [string]\n");
 	return (ret);
 }

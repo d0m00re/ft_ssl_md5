@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usage.c                                         :+:      :+:    :+:   */
+/*   md5_process.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:31:22 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:31:42 by alhelson         ###   ########.fr       */
+/*   Created: 2019/07/25 15:50:32 by alhelson          #+#    #+#             */
+/*   Updated: 2019/07/25 15:50:34 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_display.h"
+#include "ft_md5.h"
 
-int	ft_usage(int ret)
+uint32_t	md5_process_f(uint32_t x, uint32_t y, uint32_t z)
 {
-	ft_putstr("usage:\n\t./hash [md5/sha256] [-s string]\n");
-	ft_putstr("option: \n");
-	ft_putstr("\t-s : print the sum of the given string\n");
-	ft_putstr("\t-q : quiet mode\n\t-r : reverse format output\n");
-	ft_putstr("\t-p : echo STDIN to STDOUT\n");
-	return (ret);
+	return (x & y) | ((~x) & z);
+}
+
+uint32_t	md5_process_g(uint32_t x, uint32_t y, uint32_t z)
+{
+	return (x & z) | ((y & (~z)));
+}
+
+uint32_t	md5_process_h(uint32_t x, uint32_t y, uint32_t z)
+{
+	return (x ^ y ^ z);
+}
+
+uint32_t	md5_process_i(uint32_t x, uint32_t y, uint32_t z)
+{
+	return (y ^ (x | (~z)));
 }

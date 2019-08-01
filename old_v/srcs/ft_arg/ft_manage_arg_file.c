@@ -27,11 +27,11 @@ static void		display_error_file(char *name_file, int d_show, int type_hash)
 		return ;
 	ft_putstr("ft_ssl: ");
 	if (type_hash == 1)
-		ft_putstr("md5: ");
+		ft_putstr("md5");
 	else if (type_hash == 2)
-		ft_putstr("sha256: ");
+		ft_putstr("sha256");
 	else
-		ft_putstr("Unknown hash: ");
+		ft_putstr("Unknown hash");
 	ft_putstr(name_file);
 	ft_putstr(": No such file or directory\n");
 }

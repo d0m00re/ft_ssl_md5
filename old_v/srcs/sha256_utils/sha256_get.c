@@ -23,13 +23,8 @@ char				*sha256_get(char *str, size_t size_str)
 	error = 0;
 	size = 8 * 8 + 1;
 	word = word_init_sha256(str, size_str, &error);
-	if (error)
-		return (0);
 	if (error || !(hash = malloc(sizeof(char) * size)))
-	{
-		free(word.msg);
 		return (0);
-	}
 	ft_bzero(hash, size);
 	sha256_run(&word);
 	store_hex128_to_32_char(hash, word.word, 8);
