@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stdlib.h                                        :+:      :+:    :+:   */
+/*   get_fd0.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 16:00:12 by alhelson          #+#    #+#             */
-/*   Updated: 2019/08/01 17:09:23 by alhelson         ###   ########.fr       */
+/*   Created: 2019/08/01 17:05:41 by alhelson          #+#    #+#             */
+/*   Updated: 2019/08/01 17:06:10 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STDLIB_H
-# define FT_STDLIB_H
+#include "string_resize.h"
 
-# include <stdlib.h>
-# include <stdint.h>
+int						get_fd0(char **mem, size_t *size)
+{
+	t_resize_mem		r_str;
 
-int			ft_atoi(const char *str);
-
-void		*ft_realloc(void *mem, size_t size, size_t new_size);
-
-uint32_t	swap32(uint32_t r);
-
-uint64_t	swap64(uint64_t r);
-
-#endif
+	if (resize_mem_get_stdin(&r_str))
+		return (1);
+	*mem = r_str.mem;
+	*size = r_str.size;
+	return (0);
+}

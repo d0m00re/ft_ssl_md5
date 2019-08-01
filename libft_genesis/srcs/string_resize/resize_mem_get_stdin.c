@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stdlib.h                                        :+:      :+:    :+:   */
+/*   resize_mem_get_stdin.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 16:00:12 by alhelson          #+#    #+#             */
-/*   Updated: 2019/08/01 17:09:23 by alhelson         ###   ########.fr       */
+/*   Created: 2019/08/01 17:04:33 by alhelson          #+#    #+#             */
+/*   Updated: 2019/08/01 17:04:52 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STDLIB_H
-# define FT_STDLIB_H
+#include "string_resize.h"
 
-# include <stdlib.h>
-# include <stdint.h>
+int			resize_mem_get_stdin(t_resize_mem *r_str)
+{
+	ssize_t	size;
+	char	buffer[10];
+	int		ret;
 
-int			ft_atoi(const char *str);
-
-void		*ft_realloc(void *mem, size_t size, size_t new_size);
-
-uint32_t	swap32(uint32_t r);
-
-uint64_t	swap64(uint64_t r);
-
-#endif
+	resize_mem_init(r_str, 1000);
+	while ((size = read(0, buffer, 10)) > 0)
+	{
+		if ((ret = resize_mem_add_data(r_str, buffer, size)))
+			return (1);
+	}
+	return (0);
+}

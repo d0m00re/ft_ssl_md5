@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stdlib.h                                        :+:      :+:    :+:   */
+/*   resize_mem_resize.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 16:00:12 by alhelson          #+#    #+#             */
-/*   Updated: 2019/08/01 17:09:23 by alhelson         ###   ########.fr       */
+/*   Created: 2019/08/01 16:56:45 by alhelson          #+#    #+#             */
+/*   Updated: 2019/08/01 16:56:58 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STDLIB_H
-# define FT_STDLIB_H
+#include "string_resize.h"
+#include "ft_stdlib.h"
 
-# include <stdlib.h>
-# include <stdint.h>
+/*
+** redimenssionner la string
+** 1 : overflow probelm
+** 2 : realloction problem
+** 3 :
+*/
 
-int			ft_atoi(const char *str);
-
-void		*ft_realloc(void *mem, size_t size, size_t new_size);
-
-uint32_t	swap32(uint32_t r);
-
-uint64_t	swap64(uint64_t r);
-
-#endif
+int			resize_mem_resize(t_resize_mem *r_str, size_t max_size)
+{
+	if (max_size < r_str->max_size)
+		return (1);
+	if (!(r_str->mem = ft_realloc(r_str->mem, r_str->size, max_size)))
+		return (2);
+	r_str->max_size = max_size;
+	return (0);
+}

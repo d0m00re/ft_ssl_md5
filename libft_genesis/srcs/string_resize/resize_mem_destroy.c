@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_resize_destroy.c                            :+:      :+:    :+:   */
+/*   resize_mem_destroy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 00:03:45 by alhelson          #+#    #+#             */
-/*   Updated: 2018/03/18 00:04:05 by alhelson         ###   ########.fr       */
+/*   Created: 2019/08/01 17:02:40 by alhelson          #+#    #+#             */
+/*   Updated: 2019/08/01 17:02:43 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_resize.h"
 #include <stdlib.h>
 
-void	string_resize_destroy(t_string_resize *st)
+int	resize_mem_destroy(t_resize_mem *r_str)
 {
-	if (!st)
-		return ;
-	if (st->str)
-		free(st->str);
-	free(st);
-	st = 0;
+	if (r_str && r_str->mem)
+		free(r_str->mem);
+	else
+		return (1);
+	return (0);
 }

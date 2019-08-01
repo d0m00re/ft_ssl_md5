@@ -16,48 +16,48 @@
 
 #ifndef STRING_RESIZE_H
 # define STRING_RESIZE_H
+
 # include "ft_string.h"
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include "ft_stdlib.h"
 
-typedef struct		s_string_resize
+typedef struct	s_resize_mem
 {
-	char			*str;
-	unsigned int	len;
-	unsigned int	len_max;
-}					t_string_resize;
+	char *mem;
+	size_t size;
+	size_t max_size;
+}	t_resize_mem;
 
 /*
-** init data structure
+** alloc max_size and init structure
+** max_size : taille max que la string peut contenir avec redimenssion
 */
-
-t_string_resize		*string_resize_make(unsigned int len_max);
-
-t_string_resize		*string_resize_make_with_str(unsigned int len_max,\
-		char *str);
+int	resize_mem_init(t_resize_mem *r_str, size_t max_size);
 
 /*
-** destroy
+** redimenssionner la string
+** 1 : overflow probelm
+** 2 : realloction problem
+** 3 :
 */
-
-void				string_resize_destroy(t_string_resize *st);
+int	resize_mem_resize(t_resize_mem *r_str, size_t max_size);
 
 /*
-** add char in string at certain pos
-** 1 : error
-** 0 : good
+** 1 : overflow problem
 */
+int	resize_mem_add_data(t_resize_mem *r_str, void *mem_add, size_t size);
 
-void				string_resize_redim_string(t_string_resize *t,\
-		unsigned int factor);
-int					string_resize_add_char(t_string_resize *st,\
-		unsigned int pos, char c);
+int	resize_mem_destroy(t_resize_mem *r_str);
 
 /*
-** delete char in string at certein pos
-** 1 : error
-** 0 : good
+** -------------------------------------------------------------------------
+** utilities function
 */
 
-int					string_resize_del_char(t_string_resize *st,\
-		unsigned int pos);
+int	resize_mem_get_stdin(t_resize_mem *r_str);
+
+int	get_fd0(char **mem, size_t *size);
 
 #endif

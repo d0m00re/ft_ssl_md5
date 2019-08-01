@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stdlib.h                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 16:00:12 by alhelson          #+#    #+#             */
-/*   Updated: 2019/08/01 17:09:23 by alhelson         ###   ########.fr       */
+/*   Created: 2019/08/01 16:47:41 by alhelson          #+#    #+#             */
+/*   Updated: 2019/08/01 16:48:01 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STDLIB_H
-# define FT_STDLIB_H
+#include <string.h>
+#include <stdlib.h>
+#include "ft_string.h"
 
-# include <stdlib.h>
-# include <stdint.h>
+void	*ft_realloc(void *mem, size_t size, size_t new_size)
+{
+	void *mem_tmp;
 
-int			ft_atoi(const char *str);
-
-void		*ft_realloc(void *mem, size_t size, size_t new_size);
-
-uint32_t	swap32(uint32_t r);
-
-uint64_t	swap64(uint64_t r);
-
-#endif
+	if (!(mem_tmp = malloc(new_size)))
+		return (0);
+	ft_bzero(mem_tmp, new_size);
+	ft_memcpy(mem_tmp, mem, size);
+	free(mem);
+	mem = mem_tmp;
+	return (mem);
+}

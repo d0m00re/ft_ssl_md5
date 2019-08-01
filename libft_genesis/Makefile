@@ -54,7 +54,7 @@ SRC_M_STRING =  ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strcat.c repl
 		substring_is_present_with_delimiter.c store_hex128_to_32_char.c ft_memcpy.c\
 		ft_bzero.c
 
-SRC_M_STDLIB = ft_atoi.c swap.c
+SRC_M_STDLIB = ft_atoi.c swap.c ft_realloc.c
 
 SRC_M_LINKED_LIST = ft_lstcreate_elem.c ft_lstpush_back.c   ft_lstpush_front.c ft_lstdestroy.c ft_lstdisplay.c
 
@@ -64,7 +64,7 @@ SRC_M_FILE = ft_file_exist.c       ft_file_return_data.c ft_file_size.c
 
 SRC_M_TAB2D_INT = make_2dtab_int.c destroy_2dtab_int.c get_value_2dtab_int.c set_value_2dtab_int.c
 
-SRC_M_STRING_RESIZE = string_resize_make.c string_resize_destroy.c string_resize_add_char.c string_resize_del_char.c
+SRC_M_STRING_RESIZE = get_fd0.c              resize_mem_add_data.c  resize_mem_destroy.c   resize_mem_get_stdin.c resize_mem_init.c      resize_mem_resize.c
 
 #################################################
 ### OBJECT
