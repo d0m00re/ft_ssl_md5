@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:41:09 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/08/03 18:50:48 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		ft_manage_arg_p(t_arg arg, char *(hash)(char *str, size_t size))
 {
 	char	*tstr;
 	char	*buff;
-	size_t size;
+	size_t	size;
 
 	tstr = 0;
 	size = 0;

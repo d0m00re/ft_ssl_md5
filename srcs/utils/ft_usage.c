@@ -6,7 +6,7 @@
 /*   By: alhelson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:31:22 by alhelson          #+#    #+#             */
-/*   Updated: 2019/07/29 12:31:42 by alhelson         ###   ########.fr       */
+/*   Updated: 2019/08/03 18:51:53 by alhelson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_usage(int ret)
 {
-	ft_putstr("usage:\n\t./ft_ssl [-s/-q/-p] [md5/sha256] [-s string] [file]\n");
+	ft_putstr("usage:\n\t./ft_ssl [-s/-q/-p] [md5/sha256] [-s string] [file] ");
+	ft_putstr("[md5/sha256] [-s string] [file]\n");
 	ft_putstr("option: \n");
 	ft_putstr("\t-s : print the sum of the given string\n");
 	ft_putstr("\t-q : quiet mode\n\t-r : reverse format output\n");
