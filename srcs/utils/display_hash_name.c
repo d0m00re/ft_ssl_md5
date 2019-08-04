@@ -14,5 +14,5 @@
 
 void	display_hash_name(int hash_num)
 {
-	ft_putstr(g_hash[hash_num].name_hash);
+	ft_putstr(g_hash[hash_num].label_hash);
 }

@@ -36,11 +36,8 @@
 
 int			main(int ac, char **av)
 {
-	char	*(*hash[2])(char *str, size_t size);
 	t_arg	arg;
 
-	hash[0] = md5_get;
-	hash[1] = sha256_get;
 	if (ac < 2)
 		return (ft_usage(1));
 	arg = manage_arg(ac, av);

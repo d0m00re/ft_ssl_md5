@@ -24,10 +24,10 @@ INC_PATH= ./$(LIBFT_PATH)/$(INC)
 #################################
 ############ SOURCES
 #################################
-SRC_M_UTILS = ft_usage.c display_hash_name.c display_hash_string_and_file.c global_hash.c  main.c
+SRC_M_UTILS = ft_usage.c display_hash_name.c display_hash_string_and_file.c main.c
 SRC_M_MD5 =     md5_global.c    md5_init.c  md5_process.c  md5_run.c md5_destroy.c md5_get.c
 SRC_M_SHA256 =  sha256_global.c sha256_get.c  sha256_init.c sha256_run.c  sha256_logical.c sha256_logical2.c sha256_destroy.c
-SRC_M_ARG = ft_arg.c ft_manage_arg_p.c ft_manage_arg_file.c ft_manage_arg_s.c
+SRC_M_ARG = ft_arg.c ft_manage_arg_p.c ft_manage_arg_file.c ft_manage_arg_s.c global_hash.c
 
 #############################
 ############ OBJECT GENERATION
@@ -53,11 +53,11 @@ OBJS = $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
 ############ RULES
 #################################
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re
 
-all: libft $(MAIN_NAME)
+all: libft_genesis $(MAIN_NAME)
 
-$(MAIN_NAME): $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS) 
+$(MAIN_NAME): $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
 	$(CC) $(CFLAGS) $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS) $(LIBFT_FLAGS)/ -I $(INC_PATH) -I $(INC) -o $(MAIN_NAME)
 
 # rep generation file
@@ -83,8 +83,8 @@ re : fclean all
 
 ##############################
 ############### libft rules ##
-libft:
-	@cd $(LIBFT_PATH) && make;
+libft_genesis:
+	make -C $(LIBFT_PATH)
 
 fclean_libft:
 	@cd $(LIBFT_PATH) && make fclean

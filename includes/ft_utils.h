@@ -16,16 +16,6 @@
 # include "ft_arg.h"
 # include "ft_display.h"
 
-typedef char	*(*t_hash)(char *str, size_t size);
-
-typedef struct	s_hash_ref
-{
-	t_hash		opt;
-	const char	*name_hash;
-}				t_hash_ref;
-
-extern const	t_hash_ref g_hash[];
-
 void			display_hash_string_and_file(char *hash, t_arg arg,\
 				char sep, char *name);
 

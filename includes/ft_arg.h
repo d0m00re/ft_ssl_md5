@@ -15,6 +15,19 @@
 
 # include "ft_string.h"
 
+# define NB_HASH 2
+
+typedef char	*(*t_hash)(char *str, size_t size);
+
+typedef struct	s_hash_ref
+{
+        t_hash		opt;
+        const char	*name_hash;
+        const char	*label_hash;
+}	t_hash_ref;
+
+extern const t_hash_ref g_hash[];
+
 /*
 ** type_hash : md5 or sha256 or error
 ** p : stdin to stdout

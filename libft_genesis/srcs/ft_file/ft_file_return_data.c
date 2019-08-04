@@ -26,10 +26,13 @@ char			*ft_file_return_data(char *name)
 	size = ft_file_size(name);
 	if (!name || size <= 0)
 		return (0);
-	str = malloc(sizeof(char) * (size + 1));
-	if (!str)
+	if (!(str = malloc(sizeof(char) * (size + 1))))
 		return (0);
-	fd = open(name, O_RDONLY);
+	if ((fd = open(name, O_RDONLY)) == -1)
+	{
+		free(str);
+		return (0);
+	}
 	count = 0;
 	while (read(fd, &c, 1) && count < size)
 	{
@@ -44,17 +47,25 @@ char			*ft_file_return_data(char *name)
 char			*ft_file_return_data_end_caract(char *name, char end)
 {
 	char		*str;
-	size_t		size;
+	ssize_t		size;
+	//size_t		size_tmp;
 	int			fd;
 
 	size = ft_file_size(name);
 	if (!name || size <= 0)
 		return (0);
-	str = malloc(sizeof(char) * (size + 2));
-	if (!str)
+	if (!(str = malloc(sizeof(char) * (size + 2))))
 		return (0);
-	fd = open(name, O_RDONLY);
-	read(fd, str, size);
+	if ((fd = open(name, O_RDONLY)) == -1)
+	{
+		free(str);
+		return (0);
+	}
+	if ((read(fd, str, size)) != size)
+	{
+		free(str);
+		return (0);
+	}
 	close(fd);
 	str[size - 1] = end;
 	str[size] = 0;
