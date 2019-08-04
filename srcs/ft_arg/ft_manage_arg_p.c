@@ -28,7 +28,7 @@ void		ft_manage_arg_p(t_arg arg, char *(hash)(char *str, size_t size))
 	{
 		if ((get_fd0(&buff, &size)))
 		{
-			ft_putstr("error ... fd0\n");
+			ft_putstr("/!\\ error 0x1001 | failed stdin\n");
 			return ;
 		}
 		if (arg.pp)

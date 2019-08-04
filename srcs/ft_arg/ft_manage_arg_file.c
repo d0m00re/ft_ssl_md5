@@ -26,10 +26,11 @@ static void		display_error_file(char *name_file, int d_show, int type_hash)
 	if (d_show)
 		return ;
 	ft_putstr("ft_ssl: ");
-	if (type_hash == 1)
-		ft_putstr("md5: ");
-	else if (type_hash == 2)
-		ft_putstr("sha256: ");
+	if (type_hash)
+	{
+		ft_putstr(g_hash[type_hash - 1].name_hash);
+		ft_putstr(":");
+	}
 	else
 		ft_putstr("Unknown hash: ");
 	ft_putstr(name_file);

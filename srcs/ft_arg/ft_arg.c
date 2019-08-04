@@ -11,12 +11,26 @@
 /* ************************************************************************** */
 
 #include "ft_arg.h"
+#include "ft_string.h"
 #include <stdio.h>
+
+static int		get_id_hash(char *str)
+{
+	int count;
+
+	count = 0;
+	while (count < NB_HASH)
+	{
+		if (ft_strcmp(str, g_hash[count].name_hash) == 0)
+			return (count + 1);
+		count++;
+	}
+	return (0);
+}
 
 static int		arg_update_hash(t_arg *arg, char *str)
 {
-	arg->type_hash =\
-		substring_is_present_with_delimiter("md5|sha256", str, '|');
+	arg->type_hash = get_id_hash(str);//substring_is_present_with_delimiter("md5|sha256", str, '|');
 	if (arg->type_hash == 0)
 		arg->error = 1;
 	return (arg->error);
