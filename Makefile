@@ -53,11 +53,11 @@ OBJS = $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
 ############ RULES
 #################################
 
-#.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re libft
 
 all: libft $(MAIN_NAME)
 
-$(MAIN_NAME): $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
+$(MAIN_NAME): $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS) 
 	$(CC) $(CFLAGS) $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS) $(LIBFT_FLAGS)/ -I $(INC_PATH) -I $(INC) -o $(MAIN_NAME)
 
 # rep generation file
@@ -84,7 +84,7 @@ re : fclean all
 ##############################
 ############### libft rules ##
 libft:
-	@make -C $(LIBFT_PATH)
+	@cd $(LIBFT_PATH) && make;
 
 fclean_libft:
 	@cd $(LIBFT_PATH) && make fclean
