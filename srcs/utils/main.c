@@ -46,8 +46,8 @@ int			main(int ac, char **av)
 	arg = manage_arg(ac, av);
 	if (arg.error || arg.type_hash == 0)
 		return (ft_usage(arg.error));
-	ft_manage_arg_p(arg, hash[arg.type_hash - 1]);
-	ft_manage_arg_s(arg, hash[arg.type_hash - 1]);
-	ft_manage_arg_file(arg, hash[arg.type_hash - 1], av, ac);
+	ft_manage_arg_p(arg, g_hash[arg.type_hash - 1].opt);
+	ft_manage_arg_s(arg, g_hash[arg.type_hash - 1].opt);
+	ft_manage_arg_file(arg, g_hash[arg.type_hash - 1].opt, av, ac);
 	return (0);
 }

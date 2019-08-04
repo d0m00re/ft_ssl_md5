@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = #-Wall -Werror -Wextra
 NAME = hash_bitch
 MAIN_NAME = ft_ssl
 SRC_PATH = srcs
@@ -24,7 +24,7 @@ INC_PATH= ./$(LIBFT_PATH)/$(INC)
 #################################
 ############ SOURCES
 #################################
-SRC_M_UTILS = ft_usage.c display_hash_name.c display_hash_string_and_file.c main.c
+SRC_M_UTILS = ft_usage.c display_hash_name.c display_hash_string_and_file.c global_hash.c  main.c
 SRC_M_MD5 =     md5_global.c    md5_init.c  md5_process.c  md5_run.c md5_destroy.c md5_get.c
 SRC_M_SHA256 =  sha256_global.c sha256_get.c  sha256_init.c sha256_run.c  sha256_logical.c sha256_logical2.c sha256_destroy.c
 SRC_M_ARG = ft_arg.c ft_manage_arg_p.c ft_manage_arg_file.c ft_manage_arg_s.c
@@ -58,7 +58,6 @@ OBJS = $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
 all: $(MAIN_NAME)
 
 $(MAIN_NAME): libft $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
-	#make -C $(LIBFT_PATH) &> /dev/null
 	$(CC) $(CFLAGS) $(OBJS)  $(LIBFT_FLAGS)/ -I $(INC_PATH) -I $(INC) -o $(MAIN_NAME)
 
 # rep generation file
@@ -82,7 +81,8 @@ fclean: clean fclean_libft
 
 re : fclean all
 
-#libft rules
+##############################
+############### libft rules ##
 libft:
 	make -C $(LIBFT_PATH)
 
