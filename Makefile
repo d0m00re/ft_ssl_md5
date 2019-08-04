@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = #-Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 NAME = hash_bitch
 MAIN_NAME = ft_ssl
 SRC_PATH = srcs
@@ -53,12 +53,12 @@ OBJS = $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
 ############ RULES
 #################################
 
-.PHONY: all clean fclean re libft
+#.PHONY: all clean fclean re libft
 
-all: $(MAIN_NAME)
+all: libft $(MAIN_NAME)
 
-$(MAIN_NAME): libft $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
-	$(CC) $(CFLAGS) $(OBJS)  $(LIBFT_FLAGS)/ -I $(INC_PATH) -I $(INC) -o $(MAIN_NAME)
+$(MAIN_NAME): $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS)
+	$(CC) $(CFLAGS) $(OBJ_MD5) $(OBJ_SHA256) $(OBJ_ARG) $(OBJ_UTILS) $(LIBFT_FLAGS)/ -I $(INC_PATH) -I $(INC) -o $(MAIN_NAME)
 
 # rep generation file
 $(OBJ_UTILS): $(OBJ_PATH)%.o : $(SRC_PATH)/$(SRC_M_UTILS_PATH)%.c $(INCLUDES)
@@ -84,7 +84,7 @@ re : fclean all
 ##############################
 ############### libft rules ##
 libft:
-	make -C $(LIBFT_PATH)
+	@make -C $(LIBFT_PATH)
 
 fclean_libft:
 	@cd $(LIBFT_PATH) && make fclean
